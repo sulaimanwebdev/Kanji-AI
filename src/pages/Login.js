@@ -70,11 +70,11 @@ const Login = () => {
     <div className="min-h-screen bg-main px-5 py-10 flex items-center justify-center">
 
      <div className={`text-center text-white w-full ${mainScreen === "home" ? "block" : "hidden"}`}>
-      <img src="/images/main.svg" alt="main" className='w-[500px] mx-auto' />
+      <img src="/images/main.svg" alt="main" className='w-[400px] lg:w-[500px] mx-auto' />
       <div className='max-w-[600px] mx-auto relative'>
-        <div className='font-bold text-[35px] mt-3'>Welcome to Kanji</div>
-        <div className='font-light mt-2'>We're happy to help you manage and measure your<br/> brand perception using our AI video analysis tool</div>
-        <button onClick={()=> {setmainScreen("login")}} className='buttonShadow w-full flex items-center justify-center py-3 bg-main rounded-full mt-10'>Get Started</button>
+        <div className='font-bold text-[30px] sm:text-[35px] mt-3'>Welcome to Kanji</div>
+        <div className='font-light mt-2'>We're happy to help you manage and measure your brand perception using our AI video analysis tool</div>
+        <button onClick={()=> {setmainScreen("login")}} className='buttonShadow w-full flex items-center justify-center py-3 bg-[#0B6DEB] rounded-full mt-10'>Get Started</button>
         <img src="/images/commas.svg" alt="commas" className='absolute -top-5 left-0 w-[80px]' />
       </div>
      </div>
@@ -82,21 +82,26 @@ const Login = () => {
 
 
         <div className={`bg-white w-full max-w-[600px] mx-auto rounded-md p-7 ${mainScreen === "login" ? "block" : "hidden"}`}>
-            <div className="flex items-center justify-between mb-10">
+          {
+            screen === 5 ?
+            null
+            :
+            <div className="flex items-center justify-between gap-3 mb-10">
                 <button onClick={progressBack}><svg width="35" height="19" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.939339 10.9393C0.353554 11.5251 0.353554 12.4749 0.939339 13.0607L10.4853 22.6066C11.0711 23.1924 12.0208 23.1924 12.6066 22.6066C13.1924 22.0208 13.1924 21.0711 12.6066 20.4853L4.12132 12L12.6066 3.51472C13.1924 2.92893 13.1924 1.97919 12.6066 1.3934C12.0208 0.807611 11.0711 0.807611 10.4853 1.3934L0.939339 10.9393ZM40 10.5L2 10.5V13.5L40 13.5V10.5Z" fill="#909090"/></svg></button>
-                <div className='flex items-center gap-2'>
-                    <div className="w-24 h-[6px] bg-main rounded-full"></div>
-                    <div className={`w-24 h-[6px] rounded-full ${screen > 1 ? "bg-main" : "bg-[#E2EFFF]"}`}></div>
-                    <div className={`w-24 h-[6px] rounded-full ${screen > 2 ? "bg-main" : "bg-[#E2EFFF]"}`}></div>
-                    <div className={`w-24 h-[6px] rounded-full ${screen > 3 ? "bg-main" : "bg-[#E2EFFF]"}`}></div>
+                <div className='flex items-center gap-2 w-full sm:w-auto'>
+                    <div className="w-full sm:w-24 h-[6px] bg-main rounded-full"></div>
+                    <div className={`w-full sm:w-24 h-[6px] rounded-full ${screen > 1 ? "bg-main" : "bg-[#E2EFFF]"}`}></div>
+                    <div className={`w-full sm:w-24 h-[6px] rounded-full ${screen > 2 ? "bg-main" : "bg-[#E2EFFF]"}`}></div>
+                    <div className={`w-full sm:w-24 h-[6px] rounded-full ${screen > 3 ? "bg-main" : "bg-[#E2EFFF]"}`}></div>
                 </div>
-                <div className="invisible opacity-0">.</div>
+                <div className="invisible opacity-0 hidden sm:flex">.</div>
             </div>
+          }
 
             {/* Create Account */}
            <div className={`w-full ${screen === 1 ? "" : "hidden"}`}>
               <div className='text-center mb-10'>
-                 <div className='font-[800] text-[30px] mb-2.5'>Create your account</div>
+                 <div className='font-[800] text-[25px] sm:text-[30px] mb-2.5'>Create your account</div>
                  <div className='text-not-gray'>Fill up the form and register your details to create a new account</div>
               </div>
 
@@ -133,7 +138,7 @@ const Login = () => {
            {/* Add Brand */}
            <div className={`w-full ${screen === 2 ? "" : "hidden"}`}>
               <div className='text-center mb-10'>
-                 <div className='font-[800] text-[30px] mb-2.5'>Add your Brand</div>
+                 <div className='font-[800] text-[25px] sm:text-[30px] mb-2.5'>Add your Brand</div>
                  <div className='text-not-gray'>Allow the AI algorithm to become acquainted with your<br/> brand for a more sophisticated analysis.</div>
               </div>
 
@@ -158,7 +163,7 @@ const Login = () => {
            {/* Add Product */}
            <div className={`w-full ${screen === 3 ? "" : "hidden"}`}>
               <div className='text-center mb-10'>
-                 <div className='font-[800] text-[30px] mb-2.5'>Add your Product</div>
+                 <div className='font-[800] text-[25px] sm:text-[30px] mb-2.5'>Add your Product</div>
                  <div className='text-not-gray'>Allow the AI algorithm to become acquainted with your<br/> brand for a more sophisticated analysis.</div>
               </div>
 
@@ -183,7 +188,7 @@ const Login = () => {
            {/* First Report */}
            <div className={`w-full ${screen === 4 ? "" : "hidden"}`}>
               <div className='text-center mb-10'>
-                 <div className='font-[800] text-[30px] mb-2.5'>Create your first report</div>
+                 <div className='font-[800] text-[25px] sm:text-[30px] mb-2.5'>Create your first report</div>
                  <div className='text-not-gray'>Customize your analysis report by selecting your preferred  topic, duration, and report frequency.</div>
               </div>
 
@@ -228,7 +233,7 @@ const Login = () => {
               
               <div className='text-center'>
                <img src="/images/rocket.svg" alt="rocket" className='w-[250px] mx-auto' />
-               <div className='font-[800] text-[30px] mb-2.5 mt-6'>Hooray!</div>
+               <div className='font-[800] text-[25px] sm:text-[30px] mb-2.5 mt-6'>Hooray!</div>
                <div className='text-not-gray'>You're all set to start measuring your brand perception with Kanji! Your report is on its way, and we can't wait to see the results!</div>
 
                 <Link to="/dashboard/key-takeaways" onClick={progress} className='buttonShadow w-full flex items-center justify-center py-3 bg-main text-white rounded-full mt-10'>Get Started</Link>
