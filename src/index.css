@@ -16,3 +16,14 @@ body {
 .buttonShadow{
   filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 }
+
+select{
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-animation: none;
+  background-repeat: no-repeat;
+  background-size: calc(100% - 3px) center;
+  background-size: 12px;
+  background-position-x: 100%;
+  background-position-y: 50%;
+}
