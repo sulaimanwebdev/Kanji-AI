@@ -13,6 +13,23 @@ body {
   overflow-x: hidden;
 }
 
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px; 
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #E8E8E8; 
+}
+
 .buttonShadow{
   filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 }
@@ -26,4 +43,8 @@ select{
   background-size: 12px;
   background-position-x: 100%;
   background-position-y: 50%;
+}
+
+.sidebarShadow{
+  filter: drop-shadow(0px 3px 10px rgba(0, 0, 0, 0.071));
 }
