@@ -1,10 +1,12 @@
+import {Link} from "react-router-dom";
 import {useState, useEffect} from "react";
 import SideBar from "../components/SideBar";
 import Navigation from "../components/Navigation";
 
 const KeyTakeAways = () => {
-   const [leftMenu, setleftMenu] = useState(true);
+   const [leftMenu, setleftMenu] = useState(false);
    const [expand, setexpand] = useState(false);
+   const [tab, settab] = useState("Key Takeaways");
 
    let array = [1,2,3,4]
 
@@ -41,15 +43,23 @@ const KeyTakeAways = () => {
              <div className="text-[19px] font-[500]">Weekly Report - Key Takeaways</div>
              <div className="text-[15px] text-not-gray mt-1">March 24, 2023</div>
 
-             <div className="flex items-center justify-between mt-10">
-              <div className="flex items-center gap-10">
-                <button className="text-main font-[500] border-solid border-b border-main pb-1">Key Takeaways</button>
-                <button className="text-[#C1C1C1] font-[500] pb-1">Suggested Action Plan</button>
+             <div className="flex items-center justify-between mt-10 sm:w-[calc(100%-115px)] overflow-y-auto relative z-10">
+              <div className="flex items-center gap-7 sm:gap-10 min-w-[350px]">
+                <button onClick={()=> {settab("Key Takeaways")}} className={` font-[500] pb-1 ${tab === "Key Takeaways" ? "text-main border-solid border-b border-main" : "text-[#C1C1C1]"}`}>Key Takeaways</button>
+                <button onClick={()=> {settab("Suggested Action Plan")}} className={` font-[500] pb-1 ${tab === "Suggested Action Plan" ? "text-main border-solid border-b border-main" : "text-[#C1C1C1]"}`}>Suggested Action Plan</button>
               </div>
-              <button onClick={()=> {setexpand(!expand)}} className="px-7 py-1.5 text-main rounded-full border-solid border border-main transition hover:bg-main hover:text-white">{expand === false ? "Expand" : "Shrink"}</button>
              </div>
 
-             <div className="cardShadow bg-white rounded-lg p-5 mt-5 overflow-hidden">
+             {
+              tab === "Key Takeaways"
+
+              ?
+
+              // Key Takeaways
+              <div>
+             <div className="mt-5 sm:-mt-3">
+             <div className="sm:-translate-y-7 mb-3 sm:mb-0 flex items-center justify-end"><button onClick={()=> {setexpand(!expand)}} className="px-7 py-1.5 text-main rounded-full border-solid border border-main transition hover:bg-main hover:text-white">{expand === false ? "Expand" : "Shrink"}</button></div>
+             <div className="cardShadow bg-white rounded-lg p-5 overflow-hidden">
               <div className="text-[19px] font-[500] mb-3">Key Takeaways</div>
                <div className={`relative transition-[height] max-h-[400px] leading-[28.5px] pr-1 overflow-y-auto ${expand === false ? "h-[70px]" : "h-auto"}`}>
                Based on the input provided, the sentiment and perception around the Tom Ford brand seem to be mostly positive. The brand identity is perceived as luxurious (34%) and high-quality (22%), which indicates that customers perceive the products to be of a high standard. However, there has been a 10% rise in negative mentions around the price, indicating that customers may perceive
@@ -57,14 +67,15 @@ const KeyTakeAways = () => {
                {expand === false ? <div className="whiteGradient fixed bottom-0 left-0 w-full h-[40px]"></div> : null}
                </div>
              </div>
+             </div>
 
-             <div className="mt-8">
-               <div className="flex items-center justify-between mb-3">
+             <div className="mt-12">
+               <div className="flex items-center justify-between mb-3 relative sm3:w-[calc(100%-183px)] z-10">
                 <div className="text-[19px] font-[500]">Top performing videos</div>
-                <button className="bg-main transition hover:bg-main-hover text-white px-6 py-2.5 rounded-full flex items-center gap-2.5 flex-row-reverse">Video Gallery <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.6696 0H4.77962C3.7486 0.00132301 2.76019 0.411481 2.03115 1.14052C1.30211 1.86957 0.891948 2.85798 0.890625 3.889L0.890625 14.779C0.891948 15.81 1.30211 16.7984 2.03115 17.5275C2.76019 18.2565 3.7486 18.6667 4.77962 18.668H15.6696C16.7006 18.6667 17.6891 18.2565 18.4181 17.5275C19.1471 16.7984 19.5573 15.81 19.5586 14.779V3.889C19.5573 2.85798 19.1471 1.86957 18.4181 1.14052C17.6891 0.411481 16.7006 0.00132301 15.6696 0ZM16.4476 8.556H18.0036V10.112H16.4476V8.556ZM16.4476 7V5.445H18.0036V7H16.4476ZM14.8906 8.556H5.55762V1.556H14.8906V8.556ZM4.00163 10.112H2.44662V8.556H4.00163V10.112ZM4.00163 7H2.44662V5.445H4.00163V7ZM2.44662 11.668H4.00163V13.224H2.44662V11.668ZM5.55762 10.112H14.8906V17.112H5.55762V10.112ZM16.4476 11.668H18.0036V13.224H16.4476V11.668ZM18.0036 3.89H16.4476V1.7C16.901 1.86028 17.2938 2.15669 17.5723 2.54869C17.8508 2.94068 18.0015 3.40914 18.0036 3.89ZM4.00362 1.7V3.89H2.44662C2.44872 3.40926 2.59921 2.94089 2.87754 2.54891C3.15587 2.15693 3.54844 1.86045 4.00163 1.7H4.00362ZM2.44662 14.779H4.00163V16.969C3.54826 16.8087 3.15546 16.5123 2.87695 16.1203C2.59843 15.7283 2.44779 15.2599 2.44562 14.779H2.44662ZM16.4466 16.969V14.779H18.0026C18.0007 15.2599 17.8503 15.7285 17.572 16.1207C17.2937 16.5129 16.901 16.8095 16.4476 16.97L16.4466 16.969Z" fill="white"/></svg></button>
                </div>
 
-               <div className="grid grid-cols-2 lg2:grid-cols-3 xl2:grid-cols-4 gap-5">
+               <div className="sm3:-translate-y-12 mb-3 sm3:mb-0 flex items-center justify-end"><Link to="/dashboard/video-gallery" className="bg-main transition hover:bg-main-hover text-white px-6 py-2.5 rounded-full flex items-center gap-2.5 flex-row-reverse">Video Gallery <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.6696 0H4.77962C3.7486 0.00132301 2.76019 0.411481 2.03115 1.14052C1.30211 1.86957 0.891948 2.85798 0.890625 3.889L0.890625 14.779C0.891948 15.81 1.30211 16.7984 2.03115 17.5275C2.76019 18.2565 3.7486 18.6667 4.77962 18.668H15.6696C16.7006 18.6667 17.6891 18.2565 18.4181 17.5275C19.1471 16.7984 19.5573 15.81 19.5586 14.779V3.889C19.5573 2.85798 19.1471 1.86957 18.4181 1.14052C17.6891 0.411481 16.7006 0.00132301 15.6696 0ZM16.4476 8.556H18.0036V10.112H16.4476V8.556ZM16.4476 7V5.445H18.0036V7H16.4476ZM14.8906 8.556H5.55762V1.556H14.8906V8.556ZM4.00163 10.112H2.44662V8.556H4.00163V10.112ZM4.00163 7H2.44662V5.445H4.00163V7ZM2.44662 11.668H4.00163V13.224H2.44662V11.668ZM5.55762 10.112H14.8906V17.112H5.55762V10.112ZM16.4476 11.668H18.0036V13.224H16.4476V11.668ZM18.0036 3.89H16.4476V1.7C16.901 1.86028 17.2938 2.15669 17.5723 2.54869C17.8508 2.94068 18.0015 3.40914 18.0036 3.89ZM4.00362 1.7V3.89H2.44662C2.44872 3.40926 2.59921 2.94089 2.87754 2.54891C3.15587 2.15693 3.54844 1.86045 4.00163 1.7H4.00362ZM2.44662 14.779H4.00163V16.969C3.54826 16.8087 3.15546 16.5123 2.87695 16.1203C2.59843 15.7283 2.44779 15.2599 2.44562 14.779H2.44662ZM16.4466 16.969V14.779H18.0026C18.0007 15.2599 17.8503 15.7285 17.572 16.1207C17.2937 16.5129 16.901 16.8095 16.4476 16.97L16.4466 16.969Z" fill="white"/></svg></Link></div>
+               <div className="grid grid-cols-1 sm2:grid-cols-2 lg2:grid-cols-3 xl2:grid-cols-4 gap-5">
                   {
                     array.map((ele, index)=>{
                       return(
@@ -89,11 +100,11 @@ const KeyTakeAways = () => {
 
              <div className="mt-12">
                 <div className="text-[19px] font-[500] mb-3">Top reputation risks</div>
-               <div className="grid grid-cols-2 lg2:grid-cols-3 xl2:grid-cols-4 gap-5">
+               <div className="grid grid-cols-1 sm2:grid-cols-2 lg2:grid-cols-3 xl2:grid-cols-4 gap-5">
                   {
                     array.map((ele, index)=>{
                       return(
-                  <div key={index} className="cardShadow flex items-center gap-5 bg-white rounded-xl px-6 py-6 overflow-hidden">
+                  <div key={index} className="cardShadow flex items-center gap-5 bg-white rounded-xl px-6 py-3.5 overflow-hidden">
                      <div className="flex items-center justify-center rounded-2xl bg-[#FF0C0C] bg-opacity-20 rotate-45 w-[60px] h-[60px]"><svg className="-rotate-45" width="32" height="27" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.4545 0H9.09091C7.58182 0 6.29091 0.875 5.74545 2.135L0.254545 14.4725C0.0909091 14.875 0 15.295 0 15.75V19.25C0 21.175 1.63636 22.75 3.63636 22.75H15.1091L13.3818 30.7475L13.3273 31.3075C13.3273 32.025 13.6364 32.69 14.1273 33.1625L16.0545 35L28.0364 23.4675C28.6909 22.8375 29.0909 21.9625 29.0909 21V3.5C29.0909 1.575 27.4545 0 25.4545 0ZM32.7273 0V21H40V0H32.7273Z" fill="#FF0C0C"/></svg></div>
                      <div>
                        <div className="text-[14px] text-[#FF0C0C] font-[500]">Top #1 Risk</div>
@@ -111,11 +122,11 @@ const KeyTakeAways = () => {
 
              <div className="mt-12">
                 <div className="text-[19px] font-[500] mb-3">Top success signals</div>
-               <div className="grid grid-cols-2 lg2:grid-cols-3 xl2:grid-cols-4 gap-5">
+               <div className="grid grid-cols-1 sm2:grid-cols-2 lg2:grid-cols-3 xl2:grid-cols-4 gap-5">
                   {
                     array.map((ele, index)=>{
                       return(
-                  <div key={index} className="cardShadow flex items-center gap-5 bg-white rounded-xl px-6 py-6 overflow-hidden">
+                  <div key={index} className="cardShadow flex items-center gap-5 bg-white rounded-xl px-6 py-3.5 overflow-hidden">
                      <div className="flex items-center justify-center rounded-2xl bg-[#00E81F] bg-opacity-20 rotate-45 w-[60px] h-[60px]"><svg className="-rotate-45" width="30" height="35" viewBox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.366 4.03201L15.491 1.07201C15.1989 0.974206 14.883 0.974206 14.591 1.07201L5.72096 4.03201C4.30975 4.50062 3.08213 5.40207 2.21253 6.60826C1.34294 7.81446 0.875609 9.26403 0.876956 10.751V18C0.876956 28.714 13.91 34.631 14.468 34.878C14.649 34.9584 14.8449 34.9999 15.043 34.9999C15.241 34.9999 15.4369 34.9584 15.618 34.878C16.177 34.631 29.21 28.714 29.21 18V10.751C29.2113 9.26403 28.744 7.81446 27.8744 6.60826C27.0048 5.40207 25.7772 4.50062 24.366 4.03201ZM21.727 14.766L15.677 20.818C15.4293 21.0672 15.1346 21.2648 14.81 21.3992C14.4854 21.5336 14.1373 21.6022 13.786 21.601H13.737C13.3785 21.5955 13.0248 21.5173 12.6974 21.3712C12.3699 21.2251 12.0755 21.0141 11.832 20.751L8.56496 17.351C8.42234 17.22 8.30809 17.0612 8.22924 16.8844C8.15039 16.7075 8.10862 16.5164 8.10651 16.3228C8.10441 16.1292 8.142 15.9372 8.21698 15.7586C8.29196 15.5801 8.40274 15.4189 8.54247 15.2848C8.68219 15.1508 8.84791 15.0468 9.02939 14.9793C9.21087 14.9118 9.40427 14.8822 9.59763 14.8923C9.79099 14.9024 9.98023 14.9521 10.1537 15.0382C10.3271 15.1243 10.481 15.2451 10.606 15.393L13.785 18.708L19.718 12.758C19.846 12.6128 20.0024 12.4954 20.1775 12.413C20.3527 12.3306 20.5429 12.285 20.7363 12.2789C20.9298 12.2728 21.1225 12.3065 21.3024 12.3777C21.4824 12.449 21.6459 12.5564 21.7827 12.6932C21.9196 12.8301 22.027 12.9936 22.0982 13.1735C22.1695 13.3535 22.2031 13.5462 22.1971 13.7396C22.191 13.9331 22.1454 14.1233 22.063 14.2984C21.9806 14.4736 21.8631 14.63 21.718 14.758L21.727 14.766Z" fill="#00E81F"/></svg></div>
                      <div>
                        <div className="text-[14px] text-[#00E81F] font-[500]">Top #1 Success</div>
@@ -129,8 +140,27 @@ const KeyTakeAways = () => {
                </div>
              </div>
 
+          </div>
 
-             
+          :
+
+          // Suggested Action Plan
+          <div>
+              <div className="mt-5 sm:-mt-3">
+             <div className="sm:-translate-y-7 mb-3 sm:mb-0 flex items-center justify-end"><button onClick={()=> {setexpand(!expand)}} className="px-7 py-1.5 text-main rounded-full border-solid border border-main transition hover:bg-main hover:text-white">{expand === false ? "Expand" : "Shrink"}</button></div>
+             <div className="cardShadow bg-white rounded-lg p-5 overflow-hidden">
+              <div className="text-[19px] font-[500] mb-3">Suggested Action Plan</div>
+               <div className={`relative transition-[height] max-h-[400px] leading-[28.5px] pr-1 overflow-y-auto ${expand === false ? "h-[70px]" : "h-auto"}`}>
+               Based on the input provided, the sentiment and perception around the Tom Ford brand seem to be mostly positive. The brand identity is perceived as luxurious (34%) and high-quality (22%), which indicates that customers perceive the products to be of a high standard. However, there has been a 10% rise in negative mentions around the price, indicating that customers may perceive
+               Based on the input provided, the sentiment and perception around the Tom Ford brand seem to be mostly positive. The brand identity is perceived as luxurious (34%) and high-quality (22%), which indicates that customers perceive the products to be of a high standard. However, there has been a 10% rise in negative mentions around the price, indicating that customers may perceive
+               {expand === false ? <div className="whiteGradient fixed bottom-0 left-0 w-full h-[40px]"></div> : null}
+               </div>
+             </div>
+             </div>
+          </div>
+
+
+             }
           </div>
 
         </div>
