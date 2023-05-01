@@ -195,7 +195,7 @@ const Login = () => {
               <div>
                 <div className="relative w-full flex items-center rounded-md border-solid border border-[#AAAAAA] px-5 focus-within:border-main h-[60px]">
                     <div className="text-[#6E6E6E] text-[15px] font-[500] absolute -top-[10px] left-3 bg-white px-2">Analysis Topic</div>
-                    <select style={{backgroundImage: "url(/images/arrow.svg)"}} className="cursor-pointer text-[#9CA3AF] w-full h-full outline-none">
+                    <select style={{backgroundImage: "url(/images/arrow.svg)"}} className="cursor-pointer bg-white text-[#9CA3AF] w-full h-full outline-none">
                      <option>What would you like to analyze?</option>
                      {brandName === "" ? null : <option>{brandName}</option>}
                     </select>
@@ -203,7 +203,7 @@ const Login = () => {
 
                 <div className="relative w-full flex items-center rounded-md border-solid border border-[#AAAAAA] px-5 focus-within:border-main h-[60px] mt-8">
                     <div className="text-[#6E6E6E] text-[15px] font-[500] absolute -top-[10px] left-3 bg-white px-2">Duration</div>
-                    <select style={{backgroundImage: "url(/images/arrow.svg)"}} className="cursor-pointer text-[#9CA3AF] w-full h-full outline-none">
+                    <select style={{backgroundImage: "url(/images/arrow.svg)"}} className="cursor-pointer bg-white text-[#9CA3AF] w-full h-full outline-none">
                      <option>How long would you like the analysis to run?</option>
                      <option>One Day</option>
                      <option>One Week</option>
@@ -213,7 +213,7 @@ const Login = () => {
 
                 <div className="relative w-full flex items-center rounded-md border-solid border border-[#AAAAAA] px-5 focus-within:border-main h-[60px] mt-8">
                     <div className="text-[#6E6E6E] text-[15px] font-[500] absolute -top-[10px] left-3 bg-white px-2">Frequency</div>
-                    <select style={{backgroundImage: "url(/images/arrow.svg)"}} className="cursor-pointer text-[#9CA3AF] w-full h-full outline-none">
+                    <select style={{backgroundImage: "url(/images/arrow.svg)"}} className="cursor-pointer bg-white text-[#9CA3AF] w-full h-full outline-none">
                      <option>How many times should we repeat the analysis?</option>
                      <option>Doesn’t repeat</option>
                      <option>Repeats twice</option>
