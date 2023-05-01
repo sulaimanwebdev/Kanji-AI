@@ -4,7 +4,7 @@ import SideBar from "../components/SideBar";
 import Navigation from "../components/Navigation";
 
 const VideoGallery = () => {
-   const [leftMenu, setleftMenu] = useState();
+   const [leftMenu, setleftMenu] = useState(true);
 
    useEffect(() => {
     const handleResize = () => {
@@ -39,10 +39,9 @@ const VideoGallery = () => {
              <div className="text-[19px] font-[500]">Weekly Report - Key Takeaways</div>
              <div className="text-[15px] text-not-gray mt-1">March 24, 2023</div>
 
-      
+           <div className="mt-10"></div>
            
           </div>
-
         </div>
       </div>
     </>

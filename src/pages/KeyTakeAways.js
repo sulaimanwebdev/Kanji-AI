@@ -4,7 +4,7 @@ import SideBar from "../components/SideBar";
 import Navigation from "../components/Navigation";
 
 const KeyTakeAways = () => {
-   const [leftMenu, setleftMenu] = useState();
+   const [leftMenu, setleftMenu] = useState(true);
    const [expand, setexpand] = useState(false);
    const [tab, settab] = useState("Key Takeaways");
 
