@@ -7,15 +7,20 @@ const KeyTakeAways = () => {
    const [leftMenu, setleftMenu] = useState(true);
    const [expand, setexpand] = useState(false);
    const [tab, settab] = useState("Key Takeaways");
+   const [windowSize, setwindowSize] = useState(true);
 
    let array = [1,2,3,4]
 
    useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1100) {
+        setwindowSize(false)
         setleftMenu(false);
+
       } else {
         setleftMenu(true);
+        setwindowSize(true)
+
       }
     };
 
@@ -33,7 +38,7 @@ const KeyTakeAways = () => {
       <div>
          <SideBar leftMenu={leftMenu} setleftMenu={setleftMenu}/>
 
-        <div className={`px-5 pt-3 pb-5 ${leftMenu === true ? "lg3:ml-[240px]" : "lg3:ml-[60px]"}`}>
+        <div className={`px-5 pt-3 pb-5 ${leftMenu === true ? windowSize === true ? "ml-[240px]" : "ml-[60px]" : "ml-[60px]"}`}>
            <div className="flex items-center justify-between">
               <div className="text-[22px] text-[#3D3D3D] font-[800]">Dashboard</div>
               <Navigation/>
