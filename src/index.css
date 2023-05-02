@@ -41,7 +41,7 @@ select{
   background-repeat: no-repeat;
   background-size: calc(100% - 3px) center;
   background-size: 12px;
-  background-position-x: 100%;
+  background-position-x: 95%;
   background-position-y: 50%;
 }
 

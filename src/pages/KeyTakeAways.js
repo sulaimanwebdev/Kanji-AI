@@ -33,10 +33,10 @@ const KeyTakeAways = () => {
       <div>
          <SideBar leftMenu={leftMenu} setleftMenu={setleftMenu}/>
 
-        <div className={`px-5 pt-3 pb-5 ${leftMenu === true ? "lg3:ml-[240px]" : ""}`}>
+        <div className={`px-5 pt-3 pb-5 ${leftMenu === true ? "lg3:ml-[240px]" : "lg3:ml-[60px]"}`}>
            <div className="flex items-center justify-between">
               <div className="text-[22px] text-[#3D3D3D] font-[800]">Dashboard</div>
-              <Navigation leftMenu={leftMenu} setleftMenu={setleftMenu}/>
+              <Navigation/>
            </div>
     
           <div className="mt-8">
