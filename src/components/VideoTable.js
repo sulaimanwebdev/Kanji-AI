@@ -308,7 +308,7 @@ const VideoTable = () => {
                     className="inline self-center ml-2"
                     onClick={toggleSentimentPopup}
                   >
-                    <img src="/images/sort.svg" className="inline" alt="sort" />
+                    <img src="/images/bars.svg" className="inline" alt="bars" />
                   </button>
                   {sentimentPopupVisible && (
                     <div
@@ -368,7 +368,7 @@ const VideoTable = () => {
                     className="inline self-center ml-2"
                     onClick={toggleEmotionPopup}
                   >
-                    <img src="/images/sort.svg" className="inline" alt="sort" />
+                    <img src="/images/bars.svg" className="inline" alt="bars" />
                   </button>
                   {emotionPopupVisible && (
                     <div
