@@ -56,3 +56,7 @@ select{
 .whiteGradient{
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.851) 0%, #FFFFFF 100%);
 }
+
+.dropDownShadow{
+  filter: drop-shadow(0px 3px 10px rgba(0, 0, 0, 0.161));
+}

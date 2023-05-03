@@ -10,7 +10,8 @@ const KeyTakeAways = () => {
    const [windowSize, setwindowSize] = useState(true);
 
    let array = [1,2,3,4]
-
+   
+  //  This useEffect is for sidebar responsiveness
    useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1100) {

@@ -1,5 +1,4 @@
-import {Link} from "react-router-dom";
-import {useState, useEffect} from "react";
+import { useState, useEffect, useRef } from "react";
 import SideBar from "../components/SideBar";
 import Navigation from "../components/Navigation";
 
@@ -7,6 +6,7 @@ const VideoGallery = () => {
    const [leftMenu, setleftMenu] = useState(true);
    const [windowSize, setwindowSize] = useState(true);
 
+  //  This useEffect is for sidebar responsiveness
    useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 1100) {
@@ -28,6 +28,30 @@ const VideoGallery = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+
+
+
+  // for popup
+  const [popupVisible, setPopupVisible] = useState(false);
+  const popupRef = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleClickOutside = (event) => {
+    if (popupRef.current && !popupRef.current.contains(event.target)) {
+      setPopupVisible(false);
+    }
+  };
+
+  const togglePopup = () => {
+    setPopupVisible(!popupVisible);
+  };
 
 
 
@@ -72,6 +96,18 @@ const VideoGallery = () => {
       keywords: ['vulnerability', 'authenticity', 'shame'],
     },
 
+    {
+      video: 'https://youtube.com',
+      title: 'Tom Ford Makeup Tutorial: Effortless Glam',
+      views: "132K",
+      likes: "53K",
+      sentiment: 'Positive',
+      coreEmotion: 'Happy',
+      keywords: ['vulnerability', 'authenticity', 'shame'],
+    },
+
+
+
 
     // Add more videos here...
   ];
@@ -89,14 +125,14 @@ const VideoGallery = () => {
            </div>
     
           <div className="mt-8">
-             <div className="flex items-center justify-between">
+             <div className="flex lg:items-center lg:justify-between flex-col lg:flex-row gap-5 lg:gap-0">
               <div>
                <div className="text-[19px] font-[500]">Weekly Report - Key Takeaways</div>
                <div className="text-[15px] text-not-gray mt-1">March 24, 2023</div>
               </div>
 
               {/* search bar */}
-               <div className="w-full rounded-full bg-white border-solid border border-[#DEDEDE] focus-within:border-main flex items-center justify-between gap-2 h-[50px] px-3 max-w-[600px]">
+               <div className="relative rounded-full bg-white border-solid border border-[#DEDEDE] focus-within:border-main flex items-center justify-between gap-2 h-[50px] px-3 lg:max-w-[600px] 2xl:max-w-[800px]">
                 <div className="flex items-center gap-2.5 w-full">
                   <img src="/images/search.svg" alt="search" />
                   <input type="text" placeholder="Search for Keywords" className="w-full h-full border-none outline-none" />
@@ -105,6 +141,11 @@ const VideoGallery = () => {
                 <div className="flex items-center justify-end gap-1 w-fit h-full py-2 whitespace-nowrap">
                   <div className="flex items-center gap-2 bg-[#F8F8F8] text-[14px] px-4 pr-6 h-full rounded-full">
                   Tutorial Video
+                  <img src="/images/cross.svg" alt="cross" className="cursor-pointer" />
+                  </div>
+
+                  <div className="flex items-center gap-2 bg-[#F8F8F8] text-[14px] px-4 pr-6 h-full rounded-full">
+                  Tom Ford
                   <img src="/images/cross.svg" alt="cross" className="cursor-pointer" />
                   </div>
 
@@ -124,10 +165,37 @@ const VideoGallery = () => {
           <tr className="text-left">
             <th className="px-4 py-4 font-[500] whitespace-nowrap">Watch Video</th>
             <th className="px-[40px] py-4 font-[500] whitespace-nowrap">Title</th>
-            <th className="px-[40px] py-4 font-[500] whitespace-nowrap">Views <img src="/images/sort.svg" alt="sort" className="inline self-center ml-2" /></th>
-            <th className="px-[40px] py-4 font-[500] whitespace-nowrap">Likes <img src="/images/sort.svg" alt="sort" className="inline self-center ml-2" /></th>
-            <th className="px-[40px] py-4 font-[500] whitespace-nowrap">Sentiment <img src="/images/bars.svg" alt="bars" className="inline self-center ml-2" /></th>
-            <th className="px-[40px] py-4 font-[500] whitespace-nowrap">Core Emotion <img src="/images/bars.svg" alt="bars" className="inline self-center ml-2" /></th>
+
+            <th className="relative px-[40px] py-4 font-[500] whitespace-nowrap">Views 
+            <button className="PopupButton inline self-center ml-2" onClick={togglePopup}>
+        <img src="/images/sort.svg" className="inline" alt="sort" />
+      </button>
+
+      {popupVisible && (
+        <div
+          className="Popup dropDownShadow flex flex-col divide-y divide-[#E6E6E6] rounded-md bg-white px-4 py-2 absolute top-full right-0"
+          ref={popupRef}
+        >
+          <svg className="absolute bottom-[calc(100%-1px)] right-5" width="26" height="10" viewBox="0 0 35 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M34.5 18.5H0L16.5 0L34.5 18.5Z" fill="white"/>
+          </svg>
+          <div className="flex items-center justify-between gap-10 py-2">
+            <div className="text-[15px] text-black">Ascending</div>
+            <input type="checkbox" className="cursor-pointer w-[15px] h-[15px] accent-main" />
+          </div>
+
+          <div className="flex items-center justify-between gap-10 py-2">
+            <div className="text-[15px] text-black">Descending</div>
+            <input type="checkbox" className="cursor-pointer w-[15px] h-[15px] accent-main" />
+          </div>
+        </div>
+      )}
+
+            </th>
+
+            <th className="PopupButton px-[40px] py-4 font-[500] whitespace-nowrap">Likes <img src="/images/sort.svg" alt="sort" className="inline self-center ml-2" /></th>
+            <th className="PopupButton px-[40px] py-4 font-[500] whitespace-nowrap">Sentiment <img src="/images/bars.svg" alt="bars" className="inline self-center ml-2" /></th>
+            <th className="PopupButton px-[40px] py-4 font-[500] whitespace-nowrap">Core Emotion <img src="/images/bars.svg" alt="bars" className="inline self-center ml-2" /></th>
             <th className="px-[40px] py-4 font-[500] whitespace-nowrap">Keywords</th>
           </tr>
         </thead>
