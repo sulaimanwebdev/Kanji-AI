@@ -82,8 +82,33 @@ const VideoTable = () => {
     setEmotionPopupVisible(!emotionPopupVisible);
   };
 
+  // keywords popup
+  const [activePopup, setActivePopup] = useState(null);
+  const popupRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setActivePopup(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handlePopupOpen = (index) => {
+    setActivePopup(index);
+  };
+
+  const handlePopupClose = () => {
+    setActivePopup(null);
+  };
+
   //popups end
 
+  
   const videos = [
     {
       video: "https://youtube.com",
@@ -92,7 +117,7 @@ const VideoTable = () => {
       likes: "53K",
       sentiment: "Positive",
       coreEmotion: "Happy",
-      keywords: ["vulnerability", "authenticity", "shame"],
+      keywords: ["Luxury", "Long Lasting", "Moisturizing", "Happy", "Heavy", "Unreliable", "Obsessed"],
     },
 
     {
@@ -102,7 +127,7 @@ const VideoTable = () => {
       likes: "53K",
       sentiment: "Positive",
       coreEmotion: "Happy",
-      keywords: ["vulnerability", "authenticity", "shame"],
+      keywords: ["Luxury", "Long Lasting", "Moisturizing", "Happy", "Heavy", "Unreliable", "Obsessed"],
     },
 
     {
@@ -112,7 +137,7 @@ const VideoTable = () => {
       likes: "53K",
       sentiment: "Positive",
       coreEmotion: "Happy",
-      keywords: ["vulnerability", "authenticity", "shame"],
+      keywords: ["Luxury", "Long Lasting", "Moisturizing", "Happy", "Heavy", "Unreliable", "Obsessed"],
     },
 
     {
@@ -122,7 +147,7 @@ const VideoTable = () => {
       likes: "53K",
       sentiment: "Positive",
       coreEmotion: "Happy",
-      keywords: ["vulnerability", "authenticity", "shame"],
+      keywords: ["Luxury", "Long Lasting", "Moisturizing", "Happy", "Heavy", "Unreliable", "Obsessed"],
     },
 
     {
@@ -132,7 +157,7 @@ const VideoTable = () => {
       likes: "53K",
       sentiment: "Positive",
       coreEmotion: "Happy",
-      keywords: ["vulnerability", "authenticity", "shame"],
+      keywords: ["Luxury", "Long Lasting", "Moisturizing", "Happy", "Heavy", "Unreliable", "Obsessed"],
     },
 
     // Add more videos here...
@@ -150,7 +175,8 @@ const VideoTable = () => {
               <th className="px-[40px] py-4 font-[500] whitespace-nowrap">
                 Title
               </th>
-              <th className="relative px-[40px] py-4 font-[500] whitespace-nowrap">
+              <th className="px-[40px] py-4 font-[500] whitespace-nowrap">
+                <div className="relative inline w-fit">
                 Views
                 <button
                   className="inline self-center ml-2"
@@ -160,7 +186,7 @@ const VideoTable = () => {
                 </button>
                 {viewsPopupVisible && (
                   <div
-                    className="dropDownShadow flex flex-col divide-y divide-[#E6E6E6] rounded-md bg-white px-4 py-2 absolute top-[calc(100%-5px)] right-0"
+                    className="dropDownShadow flex flex-col divide-y divide-[#E6E6E6] rounded-md bg-white px-4 py-2 absolute top-[calc(100%+10px)] -right-6"
                     ref={viewsPopupRef}
                   >
                     <div className="flex items-center justify-between gap-10 py-2">
@@ -191,8 +217,10 @@ const VideoTable = () => {
                     </svg>
                   </div>
                 )}
+                </div>
               </th>
-              <th className="relative px-[40px] py-4 font-[500] whitespace-nowrap">
+              <th className="px-[40px] py-4 font-[500] whitespace-nowrap">
+              <div className="relative inline w-fit">
                 Likes
                 <button
                   className="inline self-center ml-2"
@@ -202,7 +230,7 @@ const VideoTable = () => {
                 </button>
                 {likesPopupVisible && (
                   <div
-                    className="dropDownShadow flex flex-col divide-y divide-[#E6E6E6] rounded-md bg-white px-4 py-2 absolute top-[calc(100%-5px)] right-0"
+                    className="dropDownShadow flex flex-col divide-y divide-[#E6E6E6] rounded-md bg-white px-4 py-2 absolute top-[calc(100%+10px)] -right-6"
                     ref={likesPopupRef}
                   >
                     <div className="flex items-center justify-between gap-10 py-2">
@@ -233,8 +261,10 @@ const VideoTable = () => {
                     </svg>
                   </div>
                 )}
+                </div>
               </th>
-              <th className="relative px-[40px] py-4 font-[500] whitespace-nowrap">
+              <th className="px-[40px] py-4 font-[500] whitespace-nowrap">
+              <div className="relative inline w-fit">
                 Sentiment
                 <button
                   className="inline self-center ml-2"
@@ -244,7 +274,7 @@ const VideoTable = () => {
                 </button>
                 {sentimentPopupVisible && (
                   <div
-                    className="dropDownShadow flex flex-col divide-y divide-[#E6E6E6] rounded-md bg-white px-4 py-2 absolute top-[calc(100%-5px)] right-0"
+                    className="dropDownShadow flex flex-col divide-y divide-[#E6E6E6] rounded-md bg-white px-4 py-2 absolute top-[calc(100%+10px)] -right-6"
                     ref={sentimentPopupRef}
                   >
                     <div className="flex items-center justify-between gap-10 py-2">
@@ -291,8 +321,10 @@ const VideoTable = () => {
                     </svg>
                   </div>
                 )}
+                </div>
               </th>
-              <th className="relative px-[40px] py-4 font-[500] whitespace-nowrap">
+              <th className="px-[40px] py-4 font-[500] whitespace-nowrap">
+              <div className="relative inline w-fit">
                 Emotion
                 <button
                   className="inline self-center ml-2"
@@ -302,7 +334,7 @@ const VideoTable = () => {
                 </button>
                 {emotionPopupVisible && (
                   <div
-                    className="dropDownShadow flex flex-col divide-y divide-[#E6E6E6] rounded-md bg-white px-4 py-2 absolute top-[calc(100%-5px)] right-14"
+                    className="dropDownShadow flex flex-col divide-y divide-[#E6E6E6] rounded-md bg-white px-4 py-2 absolute top-[calc(100%+10px)] -right-6"
                     ref={emotionPopupRef}
                   >
                     <div className="flex items-center justify-between gap-10 py-2">
@@ -384,6 +416,7 @@ const VideoTable = () => {
                     </svg>
                   </div>
                 )}
+                </div>
               </th>
               <th className="px-[40px] py-4 font-[500] whitespace-nowrap">
                 Actions
@@ -391,36 +424,69 @@ const VideoTable = () => {
             </tr>
           </thead>
           <tbody className="font-[500] divide-y divide-[#C1C1C1]">
-            {videos.map((video, index) => (
-              <tr key={index}>
-                <td className="px-4 py-2.5 text-center whitespace-nowrap">
-                  <a
-                    href={video.video}
-                    className="flex items-center justify-center w-[130px] h-[80px] bg-[#3A3A3A] rounded-lg"
-                  >
-                    <img src="/images/play.svg" alt="play" />
-                  </a>
-                </td>
-                <td className="px-[40px] min-w-[300px]">{video.title}</td>
-                <td className="px-[40px] whitespace-nowrap">{video.views}</td>
-                <td className="px-[40px] whitespace-nowrap">{video.likes}</td>
-                <td className="px-[40px] whitespace-nowrap">
-                  {video.sentiment}
-                </td>
-                <td className="px-[40px] whitespace-nowrap">
-                  <div className="px-5 pr-12 py-2 bg-[#FFE60029] font-[400] rounded-full flex items-center gap-3">
-                    <img src="/images/smiling-face.png" alt="smiling face" />{" "}
-                    {video.coreEmotion}
-                  </div>
-                </td>
-                <td className="px-[40px] whitespace-nowrap">
-                  <button className="checkKeywordsButtons px-7 py-1.5 font-[400] text-main rounded-full border-solid border border-main transition hover:bg-main hover:text-white">
-                    Check Keywords
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+      {videos.map((video, index) => (
+        <tr key={index}>
+          <td className="px-4 py-2.5 text-center whitespace-nowrap">
+            <a
+              href={video.video}
+              className="flex items-center justify-center w-[130px] h-[80px] bg-[#3A3A3A] rounded-lg"
+            >
+              <img src="/images/play.svg" alt="play" />
+            </a>
+          </td>
+          <td className="px-[40px] min-w-[300px]">{video.title}</td>
+          <td className="px-[40px] whitespace-nowrap">{video.views}</td>
+          <td className="px-[40px] whitespace-nowrap">{video.likes}</td>
+          <td className="px-[40px] whitespace-nowrap">
+            {video.sentiment}
+          </td>
+          <td className="px-[40px] whitespace-nowrap">
+            <div className="px-5 pr-12 py-2 bg-[#FFE60029] font-[400] rounded-full flex items-center gap-3">
+              <img src="/images/smiling-face.png" alt="smiling face" />{" "}
+              {video.coreEmotion}
+            </div>
+          </td>
+          <td className="px-[40px] whitespace-nowrap">
+            <div className="relative w-fit">
+            <button
+              className="checkKeywordsButton px-7 py-1.5 font-[400] text-main rounded-full border-solid border border-main transition hover:bg-main hover:text-white"
+              onClick={() => handlePopupOpen(index)}
+            >
+              Check Keywords
+            </button>
+            {activePopup === index && (
+<div
+className="dropDownShadow z-10 flex items-center justify-center flex-wrap gap-x-3 gap-5 w-[450px] rounded-md bg-white px-3 py-5 absolute top-[calc(100%+20px)] right-14"
+ref={popupRef}
+>
+{video.keywords.map((keyword, keywordIndex) => (
+          <button
+            key={keywordIndex}
+            className="px-7 py-2 bg-[#F8F8F8] text-[15px] rounded-full"
+          >
+            {keyword}
+          </button>
+        ))}
+<svg
+  className="border-none absolute bottom-[calc(100%-1px)] right-5"
+  width="26"
+  height="10"
+  viewBox="0 0 35 19"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path d="M34.5 18.5H0L16.5 0L34.5 18.5Z" fill="white" />
+</svg>
+
+
+</div>
+
+            )}
+            </div>
+          </td>          
+        </tr>
+      ))}
+    </tbody>
         </table>
       </div>
     </>
