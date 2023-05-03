@@ -78,7 +78,7 @@ const VideoGallery = () => {
                   />
                 </div>
               
-                <div className="flex items-center justify-end gap-1 w-fit h-full py-2 whitespace-nowrap">
+                <div className="hidden sm:flex items-center justify-end gap-1 w-fit h-full py-2 whitespace-nowrap">
                   {keywords.map((keyword, index) => (
                     <div
                       key={index}
@@ -96,8 +96,33 @@ const VideoGallery = () => {
                 </div>
               </div>
 
-
              </div>
+              
+              {/* Keywords for mobile */}
+             {
+              keywords.length >= 1
+              ?
+              <div className="flex sm:hidden items-center justify-center sm:justify-end gap-2 h-[30px] whitespace-nowrap flex-wrap w-full mt-2">
+                  {keywords.map((keyword, index) => (
+                    <div
+                      key={index}
+                      className="Keyword flex items-center gap-2 bg-[#F8F8F8] text-[14px] px-3 h-full rounded-full"
+                    >
+                      {keyword}
+                      <img
+                        src="/images/cross.svg"
+                        alt="cross"
+                        className="cross cursor-pointer"
+                        onClick={() => handleRemoveKeyword(index)}
+                      />
+                    </div>
+                  ))}
+                </div>
+                :
+                null
+             }
+
+             
 
             {/* main content */}
            <div className="mt-7">
