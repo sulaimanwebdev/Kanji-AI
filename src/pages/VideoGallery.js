@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import SideBar from "../components/SideBar";
 import Navigation from "../components/Navigation";
-import VideoTable from "./VideoTable";
+import VideoTable from "../components/VideoTable";
 
 const VideoGallery = () => {
    const [leftMenu, setleftMenu] = useState(true);
