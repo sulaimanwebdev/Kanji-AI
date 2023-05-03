@@ -30,6 +30,23 @@ const VideoGallery = () => {
     };
   }, []);
 
+ 
+  // Search Keyword Functionality
+  const [keywords, setKeywords] = useState([]);
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" && event.target.value.trim() && keywords.length < 3) {
+      const newKeyword = event.target.value.trim();
+      setKeywords((prevKeywords) => [newKeyword, ...prevKeywords]);
+      event.target.value = "";
+    }
+  };
+
+  const handleRemoveKeyword = (index) => {
+    setKeywords((prevKeywords) =>
+      prevKeywords.filter((keyword, i) => i !== index)
+    );
+  };
 
   return (
     <>
@@ -50,29 +67,36 @@ const VideoGallery = () => {
               </div>
 
               {/* search bar */}
-               <div className="relative rounded-full bg-white border-solid border border-[#DEDEDE] focus-within:border-main flex items-center justify-between gap-2 h-[50px] px-3 lg:max-w-[600px] 2xl:max-w-[800px]">
+              <div className="relative rounded-full bg-white border-solid border border-[#DEDEDE] focus-within:border-main flex items-center justify-between gap-2 h-[50px] w-full px-3 lg:max-w-[600px] 2xl:max-w-[800px]">
                 <div className="flex items-center gap-2.5 w-full">
                   <img src="/images/search.svg" alt="search" />
-                  <input type="text" placeholder="Search for Keywords" className="w-full h-full border-none outline-none" />
+                  <input
+                    type="text"
+                    placeholder="Search for Keywords"
+                    className="w-full h-full border-none outline-none"
+                    onKeyDown={handleKeyDown}
+                  />
                 </div>
-
+              
                 <div className="flex items-center justify-end gap-1 w-fit h-full py-2 whitespace-nowrap">
-                  <div className="flex items-center gap-2 bg-[#F8F8F8] text-[14px] px-4 pr-6 h-full rounded-full">
-                  Tutorial Video
-                  <img src="/images/cross.svg" alt="cross" className="cursor-pointer" />
-                  </div>
-
-                  <div className="flex items-center gap-2 bg-[#F8F8F8] text-[14px] px-4 pr-6 h-full rounded-full">
-                  Tom Ford
-                  <img src="/images/cross.svg" alt="cross" className="cursor-pointer" />
-                  </div>
-
-                  <div className="flex items-center gap-2 bg-[#F8F8F8] text-[14px] px-4 pr-6 h-full rounded-full">
-                  Tom Ford
-                  <img src="/images/cross.svg" alt="cross" className="cursor-pointer" />
-                  </div>
+                  {keywords.map((keyword, index) => (
+                    <div
+                      key={index}
+                      className="Keyword flex items-center gap-2 bg-[#F8F8F8] text-[14px] px-4 pr-6 h-full rounded-full"
+                    >
+                      {keyword}
+                      <img
+                        src="/images/cross.svg"
+                        alt="cross"
+                        className="cross cursor-pointer"
+                        onClick={() => handleRemoveKeyword(index)}
+                      />
+                    </div>
+                  ))}
                 </div>
-               </div>
+              </div>
+
+
              </div>
 
             {/* main content */}
