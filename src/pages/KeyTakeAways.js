@@ -31,7 +31,7 @@ const KeyTakeAways = () => {
     // skeleton
     setTimeout(() => {
       setloading(false);
-    }, 1000);
+    }, 500);
 
     handleResize();
 

@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import SideBar from "../components/SideBar";
 import Navigation from "../components/Navigation";
 import VideoTable from "../components/VideoTable";
+import VideoGallerySkelton from "../components/Skeletons/VideoGallery";
 
 const VideoGallery = () => {
    const [leftMenu, setleftMenu] = useState(true);
    const [windowSize, setwindowSize] = useState(true);
+   const [loading, setloading] = useState(true);
 
   //  This useEffect is for sidebar responsiveness
    useEffect(() => {
@@ -20,6 +22,11 @@ const VideoGallery = () => {
 
       }
     };
+
+    // skeleton
+    setTimeout(() => {
+      setloading(false);
+    }, 500);
 
     handleResize();
 
@@ -50,6 +57,10 @@ const VideoGallery = () => {
 
   return (
     <>
+    {
+        loading ? (
+          <VideoGallerySkelton/>
+        ):
       <div>
          <SideBar leftMenu={leftMenu} setleftMenu={setleftMenu}/>
 
@@ -134,6 +145,7 @@ const VideoGallery = () => {
           </div>
         </div>
       </div>
+}
     </>
   )
 }
