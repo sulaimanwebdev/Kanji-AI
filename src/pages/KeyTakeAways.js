@@ -2,14 +2,16 @@ import {Link} from "react-router-dom";
 import {useState, useEffect} from "react";
 import SideBar from "../components/SideBar";
 import Navigation from "../components/Navigation";
+import KeyTakeaways from "../components/Skeletons/KeyTakeaways";
 
 const KeyTakeAways = () => {
    const [leftMenu, setleftMenu] = useState(true);
    const [expand, setexpand] = useState(false);
    const [tab, settab] = useState("Key Takeaways");
    const [windowSize, setwindowSize] = useState(true);
+   const [loading, setloading] = useState(true);
 
-   let array = [1,2,3,4]
+   let array = [1,2,3,4];
    
   //  This useEffect is for sidebar responsiveness
    useEffect(() => {
@@ -25,6 +27,12 @@ const KeyTakeAways = () => {
       }
     };
 
+   
+    // skeleton
+    setTimeout(() => {
+      setloading(false);
+    }, 1000);
+
     handleResize();
 
     window.addEventListener("resize", handleResize);
@@ -32,11 +40,17 @@ const KeyTakeAways = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
+
   }, []);
 
   return (
     <>
-      <div>
+    
+      {
+        loading ? (
+          <KeyTakeaways/>
+        ):
+        <div>
          <SideBar leftMenu={leftMenu} setleftMenu={setleftMenu}/>
 
         <div className={`px-5 pt-3 pb-5 ${leftMenu === true ? windowSize === true ? "ml-[240px]" : "ml-[60px]" : "ml-[60px]"}`}>
@@ -171,6 +185,7 @@ const KeyTakeAways = () => {
 
         </div>
       </div>
+      }
     </>
   )
 }
