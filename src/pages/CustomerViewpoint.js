@@ -45,6 +45,36 @@ const CustomerViewpoint = () => {
         emotion: "happy",
         percentage: "31%",
         color: "#FFFF00"
+    },
+    {
+        emotion: "calm",
+        percentage: "29%",
+        color: "#00B9FF"
+    },
+    {
+        emotion: "surprised",
+        percentage: "14%",
+        color: "#FF72F6"
+    },
+    {
+        emotion: "confused",
+        percentage: "16%",
+        color: "#FFC400"
+    },
+    {
+        emotion: "disgusted",
+        percentage: "05%",
+        color: "#00FF33"
+    },
+    {
+        emotion: "sad",
+        percentage: "02%",
+        color: "#DEDEDE"
+    },
+    {
+        emotion: "angry",
+        percentage: "03%",
+        color: "#FF0000"
     }
   ]
 
@@ -109,24 +139,28 @@ const CustomerViewpoint = () => {
 
 
             <div className="grid grid-cols-[1fr,250px] gap-5 mt-8">
-                <div className="cardShadow flex items-start justify-between gap-2 rounded-xl px-6 py-3.5">
+                <div className="cardShadow bg-white grid grid-cols-2 gap-2 rounded-xl px-6 py-3.5">
                  <div className="w-full">
                   <div className="text-[19px] font-[500] mb-3">What are people feeling?</div>
                   <div className="flex flex-col gap-5 w-full">
                     {
                         data.map((ele, index) =>{
                             return(
-                                <div className="flex items-center gap-4 w-full">
+                                <div key={index} className="flex items-center gap-4 w-full">
                                     <div className={`min-w-[20px] min-h-[20px] max-w-[20px] max-h-[20px] bg-[${ele.color}]`}></div>
-                                    <div className={`flex items-center justify-between bg-[${ele.color}] bg-opacity-5 rounded-full w-full px-3 py-2.5`}>
+                                    <div className={`flex items-center justify-between bg-[${ele.color}] rounded-full w-full px-3 pr-4 py-2.5 ${ele.emotion === "sad" ? "bg-opacity-[0.17]" : "bg-opacity-5"}`}>
                                         <div className="flex items-center gap-3 capitalize"><img src={`/images/emotions/${ele.emotion}.png`} alt="emotion" /> {ele.emotion}</div>
-                                        <div className="font-bold text-[19px]">{ele.percentage}</div>
+                                        <div className="font-bold text-[18px]">{ele.percentage}</div>
                                     </div>
                                 </div>
                             )
                         })
                     }
                   </div>
+                 </div>
+
+                 <div className="h-full flex items-center justify-center">
+                    <img src="/images/chart.svg" alt="chart" className="w-full max-w-[450px] self-center" />
                  </div>
                 </div>
                 <div className="h-96 bg-red-400"></div>
@@ -138,6 +172,15 @@ const CustomerViewpoint = () => {
         </div>
       </div>
 }
+
+{/* important for emotion color rendering, becuase the colors are dynamic and "Just in time" can not render dynamic colors in Tailwind CSS */}
+<div className="hidden bg-[#FFFF00]"></div>
+<div className="hidden bg-[#00B9FF]"></div>
+<div className="hidden bg-[#FF72F6]"></div>
+<div className="hidden bg-[#FFC400]"></div>
+<div className="hidden bg-[#00FF33]"></div>
+<div className="hidden bg-[#DEDEDE]"></div>
+<div className="hidden bg-[#FF0000]"></div>
     </>
   )
 }
