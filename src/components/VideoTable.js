@@ -6,7 +6,8 @@ const VideoTable = () => {
   const [likesPopupVisible, setLikesPopupVisible] = useState(false);
   const [sentimentPopupVisible, setSentimentPopupVisible] = useState(false);
   const [emotionPopupVisible, setEmotionPopupVisible] = useState(false);
-
+  const [activeButtonIndex, setActiveButtonIndex] = useState(1); // index of the currently active button
+  
   const viewsPopupRef = useRef(null);
   const likesPopupRef = useRef(null);
   const sentimentPopupRef = useRef(null);
@@ -81,6 +82,25 @@ const VideoTable = () => {
     setEmotionPopupVisible(!emotionPopupVisible);
   };
 
+  // allow user to select 1 checkbox at a time
+  const [selectedCheckboxViews, setSelectedCheckboxViews] = useState("ascending");
+  const handleCheckboxChangeViews = (event) => {
+    setSelectedCheckboxViews(event.target.value === selectedCheckboxViews ? null : event.target.value);
+  };
+
+  const [selectedCheckboxLikes, setSelectedCheckboxLikes] = useState("ascending");
+  const handleCheckboxChangeLikes = (event) => {
+    setSelectedCheckboxLikes(event.target.value === selectedCheckboxLikes ? null : event.target.value);
+  };
+  //end
+
+  // active button function
+  const [pagination, setpagination] = useState('1 to 5');
+  const handleButtonClick = (index) => {
+    setActiveButtonIndex(index);
+  };
+  //end
+
   // keywords popup
   const [activePopup, setActivePopup] = useState(null);
   const popupRef = useRef(null);
@@ -132,7 +152,7 @@ const VideoTable = () => {
       views: "132K",
       likes: "53K",
       sentiment: "Positive",
-      coreEmotion: "Happy",
+      coreEmotion: "Calm",
       keywords: [
         "Luxury",
         "Long Lasting",
@@ -150,7 +170,7 @@ const VideoTable = () => {
       views: "132K",
       likes: "53K",
       sentiment: "Positive",
-      coreEmotion: "Happy",
+      coreEmotion: "Surprised",
       keywords: [
         "Luxury",
         "Long Lasting",
@@ -168,7 +188,61 @@ const VideoTable = () => {
       views: "132K",
       likes: "53K",
       sentiment: "Positive",
-      coreEmotion: "Happy",
+      coreEmotion: "Confused",
+      keywords: [
+        "Luxury",
+        "Long Lasting",
+        "Moisturizing",
+        "Happy",
+        "Heavy",
+        "Unreliable",
+        "Obsessed",
+      ],
+    },
+
+    {
+      video: "https://youtube.com",
+      title: "Tom Ford Makeup Tutorial: Effortless Glam",
+      views: "132K",
+      likes: "53K",
+      sentiment: "Positive",
+      coreEmotion: "Angry",
+      keywords: [
+        "Luxury",
+        "Long Lasting",
+        "Moisturizing",
+        "Happy",
+        "Heavy",
+        "Unreliable",
+        "Obsessed",
+      ],
+    },
+
+    {
+      video: "https://youtube.com",
+      title: "Tom Ford Makeup Tutorial: Effortless Glam",
+      views: "132K",
+      likes: "53K",
+      sentiment: "Positive",
+      coreEmotion: "Sad",
+      keywords: [
+        "Luxury",
+        "Long Lasting",
+        "Moisturizing",
+        "Happy",
+        "Heavy",
+        "Unreliable",
+        "Obsessed",
+      ],
+    },
+
+    {
+      video: "https://youtube.com",
+      title: "Tom Ford Makeup Tutorial: Effortless Glam",
+      views: "132K",
+      likes: "53K",
+      sentiment: "Positive",
+      coreEmotion: "Disgusted",
       keywords: [
         "Luxury",
         "Long Lasting",
@@ -228,20 +302,26 @@ const VideoTable = () => {
                       ref={viewsPopupRef}
                     >
                       <div className="flex items-center justify-between gap-10 py-2">
-                        <div className="text-[15px] text-black">Ascending</div>
-                        <input
-                          type="checkbox"
-                          className="cursor-pointer w-[15px] h-[15px] accent-main"
-                        />
-                      </div>
+                     <div className="text-[15px] text-black">Ascending</div>
+                     <input
+                       type="checkbox"
+                       className="cursor-pointer w-[15px] h-[15px] accent-main"
+                       value="ascending"
+                       checked={selectedCheckboxViews === "ascending"}
+                       onChange={handleCheckboxChangeViews}
+                     />
+                   </div>
 
-                      <div className="flex items-center justify-between gap-10 py-2">
-                        <div className="text-[15px] text-black">Descending</div>
-                        <input
-                          type="checkbox"
-                          className="cursor-pointer w-[15px] h-[15px] accent-main"
-                        />
-                      </div>
+                   <div className="flex items-center justify-between gap-10 py-2">
+                     <div className="text-[15px] text-black">Descending</div>
+                     <input
+                       type="checkbox"
+                       className="cursor-pointer w-[15px] h-[15px] accent-main"
+                       value="descending"
+                       checked={selectedCheckboxViews === "descending"}
+                       onChange={handleCheckboxChangeViews}
+                     />
+                   </div>
 
                       <svg
                         className="border-none absolute bottom-[calc(100%-1px)] right-5"
@@ -272,20 +352,26 @@ const VideoTable = () => {
                       ref={likesPopupRef}
                     >
                       <div className="flex items-center justify-between gap-10 py-2">
-                        <div className="text-[15px] text-black">Ascending</div>
-                        <input
-                          type="checkbox"
-                          className="cursor-pointer w-[15px] h-[15px] accent-main"
-                        />
-                      </div>
+                     <div className="text-[15px] text-black">Ascending</div>
+                     <input
+                       type="checkbox"
+                       className="cursor-pointer w-[15px] h-[15px] accent-main"
+                       value="ascending"
+                       checked={selectedCheckboxLikes === "ascending"}
+                       onChange={handleCheckboxChangeLikes}
+                     />
+                   </div>
 
-                      <div className="flex items-center justify-between gap-10 py-2">
-                        <div className="text-[15px] text-black">Descending</div>
-                        <input
-                          type="checkbox"
-                          className="cursor-pointer w-[15px] h-[15px] accent-main"
-                        />
-                      </div>
+                   <div className="flex items-center justify-between gap-10 py-2">
+                     <div className="text-[15px] text-black">Descending</div>
+                     <input
+                       type="checkbox"
+                       className="cursor-pointer w-[15px] h-[15px] accent-main"
+                       value="descending"
+                       checked={selectedCheckboxLikes === "descending"}
+                       onChange={handleCheckboxChangeLikes}
+                     />
+                   </div>
 
                       <svg
                         className="border-none absolute bottom-[calc(100%-1px)] right-5"
@@ -479,8 +565,8 @@ const VideoTable = () => {
                   {video.sentiment}
                 </td>
                 <td className="px-[40px] whitespace-nowrap">
-                  <div className="px-5 pr-12 py-2 bg-[#FFE60029] font-[400] rounded-full flex items-center gap-3">
-                    <img src="/images/smiling-face.png" alt="smiling face" />{" "}
+                  <div className={`px-5 pr-12 py-2 font-[400] rounded-full flex items-center gap-3 ${video.coreEmotion === "Happy" ? "bg-[#FFE60029]" : video.coreEmotion === "Calm" ? "bg-[#00B9FF0D]" : video.coreEmotion === "Surprised" ? "bg-[#FF72F60D]" : video.coreEmotion === "Confused" ? "bg-[#FFC4000D]" : video.coreEmotion === "Angry" ? "bg-[#FF00000D]" : video.coreEmotion === "Sad" ? "bg-[#DEDEDE2B]" : video.coreEmotion === "Disgusted" ? "bg-[#00FF330D]" : ""}`}>
+                    <img src={`/images/emotions/${video.coreEmotion}.png`} alt="emotion" />
                     {video.coreEmotion}
                   </div>
                 </td>
@@ -494,7 +580,7 @@ const VideoTable = () => {
                     </button>
                     {activePopup === index && (
                       <div
-                        className="dropDownShadow z-10 flex items-center justify-center flex-wrap gap-x-3 gap-5 w-[450px] rounded-md bg-white px-3 py-5 absolute top-[calc(100%+20px)] right-14"
+                        className={`dropDownShadow z-10 flex items-center justify-center flex-wrap gap-x-3 gap-5 w-[450px] rounded-md bg-white px-3 py-5 absolute right-14 ${index === videos.length - 1 || index === videos.length - 2 ? "bottom-[calc(100%+20px)]" : "top-[calc(100%+20px)]"}`}
                         ref={popupRef}
                       >
                         {video.keywords.map((keyword, keywordIndex) => (
@@ -506,7 +592,7 @@ const VideoTable = () => {
                           </button>
                         ))}
                         <svg
-                          className="border-none absolute bottom-[calc(100%-1px)] right-5"
+                          className={`border-none absolute right-5 ${index === videos.length - 1 || index === videos.length - 2 ? "top-[calc(100%-1px)] rotate-180" : "bottom-[calc(100%-1px)]"}`}
                           width="26"
                           height="10"
                           viewBox="0 0 35 19"
@@ -531,7 +617,7 @@ const VideoTable = () => {
       <div className="flex items-center justify-center sm:justify-between flex-col-reverse sm:flex-row gap-3 mt-5">
         <div className="hidden lg3:flex opacity-0 invisible">.</div>
         <div className="flex items-center justify-center gap-3">
-          <button className="hidden sm3:flex p-2">
+          <button onClick={()=> {setpagination("1 to 5")}}  className="hidden sm3:flex p-2 previousButton">
             <svg
               width="8"
               height="14"
@@ -546,23 +632,79 @@ const VideoTable = () => {
             </svg>
           </button>
           <div className="flex items-center gap-2 sm3:gap-4">
-            <button className="px-3 py-2 font-[500] bg-white rounded-md border-solid border border-[#C8C8C8]">
-              01
-            </button>
-            <button className="px-3 py-2 font-[500] bg-main text-white transition hover:bg-main-hover hover:border-main-hover rounded-md border-solid border border-main">
-              02
-            </button>
-            <button className="px-3 py-2 font-[500] bg-white rounded-md border-solid border border-[#C8C8C8]">
-              03
-            </button>
-            <button className="px-3 py-2 font-[500] bg-white rounded-md border-solid border border-[#C8C8C8]">
-              04
-            </button>
-            <button className="px-3 py-2 font-[500] bg-white rounded-md border-solid border border-[#C8C8C8]">
-              05
-            </button>
+      {
+        pagination === "1 to 5" ?
+        <>
+        <button
+        className={`px-3 py-2 font-[500] transition rounded-md border-solid border ${activeButtonIndex === 1 ? "bg-main border-main hover:bg-main-hover hover:border-main-hover text-white" : "bg-white border-[#C8C8C8]"}`}
+        onClick={() => handleButtonClick(1)}
+      >
+        01
+      </button>
+      <button
+        className={`px-3 py-2 font-[500] transition rounded-md border-solid border ${activeButtonIndex === 2 ? "bg-main border-main hover:bg-main-hover hover:border-main-hover text-white" : "bg-white border-[#C8C8C8]"}`}
+        onClick={() => handleButtonClick(2)}
+      >
+        02
+      </button>
+      <button
+        className={`px-3 py-2 font-[500] transition rounded-md border-solid border ${activeButtonIndex === 3 ? "bg-main border-main hover:bg-main-hover hover:border-main-hover text-white" : "bg-white border-[#C8C8C8]"}`}
+        onClick={() => handleButtonClick(3)}
+      >
+        03
+      </button>
+      <button
+        className={`px-3 py-2 font-[500] transition rounded-md border-solid border ${activeButtonIndex === 4 ? "bg-main border-main hover:bg-main-hover hover:border-main-hover text-white" : "bg-white border-[#C8C8C8]"}`}
+        onClick={() => handleButtonClick(4)}
+      >
+        04
+      </button>
+      <button
+        className={`px-3 py-2 font-[500] transition rounded-md border-solid border ${activeButtonIndex === 5 ? "bg-main border-main hover:bg-main-hover hover:border-main-hover text-white" : "bg-white border-[#C8C8C8]"}`}
+        onClick={() => handleButtonClick(5)}
+      >
+        05
+      </button>
+        </>
+
+        :
+
+        <>
+        <button
+        className={`px-3 py-2 font-[500] transition rounded-md border-solid border ${activeButtonIndex === 6 ? "bg-main border-main hover:bg-main-hover hover:border-main-hover text-white" : "bg-white border-[#C8C8C8]"}`}
+        onClick={() => handleButtonClick(6)}
+      >
+        06
+      </button>
+      <button
+        className={`px-3 py-2 font-[500] transition rounded-md border-solid border ${activeButtonIndex === 7 ? "bg-main border-main hover:bg-main-hover hover:border-main-hover text-white" : "bg-white border-[#C8C8C8]"}`}
+        onClick={() => handleButtonClick(7)}
+      >
+        07
+      </button>
+      <button
+        className={`px-3 py-2 font-[500] transition rounded-md border-solid border ${activeButtonIndex === 8 ? "bg-main border-main hover:bg-main-hover hover:border-main-hover text-white" : "bg-white border-[#C8C8C8]"}`}
+        onClick={() => handleButtonClick(8)}
+      >
+        08
+      </button>
+      <button
+        className={`px-3 py-2 font-[500] transition rounded-md border-solid border ${activeButtonIndex === 9 ? "bg-main border-main hover:bg-main-hover hover:border-main-hover text-white" : "bg-white border-[#C8C8C8]"}`}
+        onClick={() => handleButtonClick(9)}
+      >
+        09
+      </button>
+      <button
+        className={`px-3 py-2 font-[500] transition rounded-md border-solid border ${activeButtonIndex === 10 ? "bg-main border-main hover:bg-main-hover hover:border-main-hover text-white" : "bg-white border-[#C8C8C8]"}`}
+        onClick={() => handleButtonClick(10)}
+      >
+        10
+      </button>
+        </>
+      }
+      
           </div>
-          <button className="hidden sm3:flex p-2">
+          <button onClick={()=> {setpagination("6 to 10")}} className="hidden sm3:flex p-2 forwardButton">
             <svg
               width="7"
               height="14"
