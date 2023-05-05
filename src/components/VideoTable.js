@@ -135,7 +135,7 @@ const VideoTable = () => {
       views: "132K",
       likes: "53K",
       sentiment: "Positive",
-      coreEmotion: "Happy",
+      coreEmotion: "happy",
       keywords: [
         "Luxury",
         "Long Lasting",
@@ -153,7 +153,7 @@ const VideoTable = () => {
       views: "132K",
       likes: "53K",
       sentiment: "Positive",
-      coreEmotion: "Calm",
+      coreEmotion: "calm",
       keywords: [
         "Luxury",
         "Long Lasting",
@@ -171,7 +171,7 @@ const VideoTable = () => {
       views: "132K",
       likes: "53K",
       sentiment: "Positive",
-      coreEmotion: "Surprised",
+      coreEmotion: "surprised",
       keywords: [
         "Luxury",
         "Long Lasting",
@@ -189,7 +189,7 @@ const VideoTable = () => {
       views: "132K",
       likes: "53K",
       sentiment: "Positive",
-      coreEmotion: "Confused",
+      coreEmotion: "confused",
       keywords: [
         "Luxury",
         "Long Lasting",
@@ -207,7 +207,7 @@ const VideoTable = () => {
       views: "132K",
       likes: "53K",
       sentiment: "Positive",
-      coreEmotion: "Angry",
+      coreEmotion: "angry",
       keywords: [
         "Luxury",
         "Long Lasting",
@@ -225,7 +225,7 @@ const VideoTable = () => {
       views: "132K",
       likes: "53K",
       sentiment: "Positive",
-      coreEmotion: "Sad",
+      coreEmotion: "sad",
       keywords: [
         "Luxury",
         "Long Lasting",
@@ -243,7 +243,7 @@ const VideoTable = () => {
       views: "132K",
       likes: "53K",
       sentiment: "Positive",
-      coreEmotion: "Disgusted",
+      coreEmotion: "disgusted",
       keywords: [
         "Luxury",
         "Long Lasting",
@@ -261,7 +261,7 @@ const VideoTable = () => {
       views: "132K",
       likes: "53K",
       sentiment: "Positive",
-      coreEmotion: "Happy",
+      coreEmotion: "happy",
       keywords: [
         "Luxury",
         "Long Lasting",
@@ -566,7 +566,7 @@ const VideoTable = () => {
                   {video.sentiment}
                 </td>
                 <td className="px-[40px] whitespace-nowrap">
-                  <div className={`px-5 pr-12 py-2 font-[400] rounded-full flex items-center gap-3 ${video.coreEmotion === "Happy" ? "bg-[#FFE60029]" : video.coreEmotion === "Calm" ? "bg-[#00B9FF0D]" : video.coreEmotion === "Surprised" ? "bg-[#FF72F60D]" : video.coreEmotion === "Confused" ? "bg-[#FFC4000D]" : video.coreEmotion === "Angry" ? "bg-[#FF00000D]" : video.coreEmotion === "Sad" ? "bg-[#DEDEDE2B]" : video.coreEmotion === "Disgusted" ? "bg-[#00FF330D]" : ""}`}>
+                  <div className={`px-5 pr-12 py-2 font-[400] rounded-full flex items-center gap-3 capitalize ${video.coreEmotion === "happy" ? "bg-[#FFE60029]" : video.coreEmotion === "calm" ? "bg-[#00B9FF0D]" : video.coreEmotion === "surprised" ? "bg-[#FF72F60D]" : video.coreEmotion === "confused" ? "bg-[#FFC4000D]" : video.coreEmotion === "angry" ? "bg-[#FF00000D]" : video.coreEmotion === "sad" ? "bg-[#DEDEDE2B]" : video.coreEmotion === "disgusted" ? "bg-[#00FF330D]" : ""}`}>
                     <img src={`/images/emotions/${video.coreEmotion}.png`} alt="emotion" />
                     {video.coreEmotion}
                   </div>
