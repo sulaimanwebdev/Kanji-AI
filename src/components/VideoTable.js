@@ -6,7 +6,7 @@ const VideoTable = () => {
   const [likesPopupVisible, setLikesPopupVisible] = useState(false);
   const [sentimentPopupVisible, setSentimentPopupVisible] = useState(false);
   const [emotionPopupVisible, setEmotionPopupVisible] = useState(false);
-  const [activeButtonIndex, setActiveButtonIndex] = useState(1); // index of the currently active button
+  const [activeButtonIndex, setActiveButtonIndex] = useState(1); // index of the currently active button pagination
   
   const viewsPopupRef = useRef(null);
   const likesPopupRef = useRef(null);
@@ -82,26 +82,7 @@ const VideoTable = () => {
     setEmotionPopupVisible(!emotionPopupVisible);
   };
 
-  // allow user to select 1 checkbox at a time
-  const [selectedCheckboxViews, setSelectedCheckboxViews] = useState("ascending");
-  const handleCheckboxChangeViews = (event) => {
-    setSelectedCheckboxViews(event.target.value === selectedCheckboxViews ? null : event.target.value);
-  };
 
-  const [selectedCheckboxLikes, setSelectedCheckboxLikes] = useState("ascending");
-  const handleCheckboxChangeLikes = (event) => {
-    setSelectedCheckboxLikes(event.target.value === selectedCheckboxLikes ? null : event.target.value);
-  };
-  //end
-
-  // active button function
-  const [pagination, setpagination] = useState('1 to 5');
-  const handleButtonClick = (index) => {
-    setActiveButtonIndex(index);
-  };
-  //end
-
-  // keywords popup
   const [activePopup, setActivePopup] = useState(null);
   const popupRef = useRef(null);
 
@@ -125,7 +106,27 @@ const VideoTable = () => {
     setActivePopup(null);
   };
 
-  //popups end
+  //end
+
+  // allow user to select 1 checkbox at a time
+  const [selectedCheckboxViews, setSelectedCheckboxViews] = useState("ascending");
+  const handleCheckboxChangeViews = (event) => {
+    setSelectedCheckboxViews(event.target.value === selectedCheckboxViews ? null : event.target.value);
+  };
+
+  const [selectedCheckboxLikes, setSelectedCheckboxLikes] = useState("ascending");
+  const handleCheckboxChangeLikes = (event) => {
+    setSelectedCheckboxLikes(event.target.value === selectedCheckboxLikes ? null : event.target.value);
+  };
+  //end
+
+  // active button function
+  const [pagination, setpagination] = useState('1 to 5');
+  const handleButtonClick = (index) => {
+    setActiveButtonIndex(index);
+  };
+  //end
+
 
   const videos = [
     {
