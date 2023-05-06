@@ -529,16 +529,7 @@ const VideoTable = () => {
                         <path d="M34.5 18.5H0L16.5 0L34.5 18.5Z" fill="white" />
                       </svg>
 
-                      <svg
-                        className="border-none absolute bottom-[calc(100%-1px)] right-5"
-                        width="26"
-                        height="10"
-                        viewBox="0 0 35 19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M34.5 18.5H0L16.5 0L34.5 18.5Z" fill="white" />
-                      </svg>
+                      
                     </div>
                   )}
                 </div>
@@ -618,7 +609,7 @@ const VideoTable = () => {
       <div className="flex items-center justify-center sm:justify-between flex-col-reverse sm:flex-row gap-3 mt-5">
         <div className="hidden lg3:flex opacity-0 invisible">.</div>
         <div className="flex items-center justify-center gap-3">
-          <button onClick={()=> {setpagination("1 to 5")}}  className="hidden sm3:flex p-2 previousButton">
+          <button onClick={()=> {setpagination("1 to 5")}}  className="flex p-2 previousButton">
             <svg
               width="8"
               height="14"
@@ -705,7 +696,7 @@ const VideoTable = () => {
       }
       
           </div>
-          <button onClick={()=> {setpagination("6 to 10")}} className="hidden sm3:flex p-2 forwardButton">
+          <button onClick={()=> {setpagination("6 to 10")}} className="flex p-2 forwardButton">
             <svg
               width="7"
               height="14"

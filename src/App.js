@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import KeyTakeAways from "./pages/KeyTakeAways";
 import VideoGallery from "./pages/VideoGallery";
 import CustomerViewpoint from "./pages/CustomerViewpoint";
+import Reports from "./pages/Reports";
 
 function App() {
   return (
@@ -11,9 +12,10 @@ function App() {
       <Router>
          <Routes>
          <Route exact path="/" element={<Login/>} />
-         <Route exact path="/dashboard/key-takeaways" element={<KeyTakeAways/>} />
-         <Route exact path="/dashboard/video-gallery" element={<VideoGallery/>} />
-         <Route exact path="/dashboard/customer-viewpoint" element={<CustomerViewpoint/>} />
+         <Route path="/dashboard/key-takeaways" element={<KeyTakeAways/>} />
+         <Route path="/dashboard/video-gallery" element={<VideoGallery/>} />
+         <Route path="/dashboard/customer-viewpoint" element={<CustomerViewpoint/>} />
+         <Route path="/reports" element={<Reports/>} />
          
          </Routes>
        </Router>
