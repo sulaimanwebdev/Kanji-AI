@@ -76,7 +76,61 @@ const CustomerViewpoint = () => {
         percentage: "03%",
         color: "#FF0000"
     }
-  ]
+  ];
+
+  
+  let keywords = [
+    {
+       keyword: "High prices",
+       mentions: "1,476"
+    },
+
+    {
+        keyword: "High Quality",
+        mentions: "1,356"
+    },
+
+    {
+        keyword: "Low Availability",
+        mentions: "1,285"
+    },
+
+    {
+        keyword: "Innovative design",
+        mentions: "1,005"
+    },
+
+    {
+        keyword: "Long lasting",
+        mentions: "945"
+    },
+
+    {
+        keyword: "Fancy",
+        mentions: "825"
+    },
+
+    {
+        keyword: "Great customer service",
+        mentions: "753"
+    },
+
+    {
+        keyword: "Luxurious",
+        mentions: "741"
+    },
+
+    {
+        keyword: "Longevity",
+        mentions: "678"
+    },
+
+    {
+        keyword: "Empowering",
+        mentions: "557"
+    }
+
+  ];
 
   return (
     <>
@@ -138,15 +192,15 @@ const CustomerViewpoint = () => {
 
 
 
-            <div className="grid grid-cols-[1fr,250px] gap-5 mt-8">
-                <div className="cardShadow bg-white grid grid-cols-2 gap-2 rounded-xl px-6 py-3.5">
+            <div className="grid grid-cols-1 sm4:grid-cols-[1fr,250px] xl2:grid-cols-[1fr,300px] gap-5 mt-8">
+                <div className="cardShadow bg-white grid grid-cols-1 lg4:grid-cols-2 gap-7 lg4:gap-2 rounded-xl px-6 py-3.5">
                  <div className="w-full">
                   <div className="text-[19px] font-[500] mb-3">What are people feeling?</div>
-                  <div className="flex flex-col gap-5 w-full">
+                  <div className="flex flex-col gap-4 w-full">
                     {
                         data.map((ele, index) =>{
                             return(
-                                <div key={index} className="flex items-center gap-4 w-full">
+                                <div key={index} className="flex items-center gap-2 sm4:gap-4 w-full">
                                     <div className={`min-w-[20px] min-h-[20px] max-w-[20px] max-h-[20px] bg-[${ele.color}]`}></div>
                                     <div className={`flex items-center justify-between bg-[${ele.color}] rounded-full w-full px-3 pr-4 py-2.5 ${ele.emotion === "sad" ? "bg-opacity-[0.17]" : "bg-opacity-5"}`}>
                                         <div className="flex items-center gap-3 capitalize"><img src={`/images/emotions/${ele.emotion}.png`} alt="emotion" /> {ele.emotion}</div>
@@ -163,8 +217,55 @@ const CustomerViewpoint = () => {
                     <img src="/images/chart.svg" alt="chart" className="w-full max-w-[450px] self-center" />
                  </div>
                 </div>
-                <div className="h-96 bg-red-400"></div>
+                <div className="h-full grid-cols-1 grid-rows-2">
+                    <div className="cardShadow bg-white h-[calc(50%-10px)] flex items-center justify-center flex-col rounded-xl px-5 py-3.5">
+                        <img src="/images/positive-vote.png" alt="positive" />
+                        <div className="text-[15px] text-[#AFAFAF] mt-2">Positive Mentions</div>
+                        <div className="text-[30px] font-bold mt-2">14,225</div>
+                    </div>
+
+                    <div className="cardShadow bg-white h-[calc(50%-10px)] mt-5 flex items-center justify-center flex-col rounded-xl px-5 py-3.5">
+                        <img src="/images/positive-vote.png" alt="positive" />
+                        <div className="text-[15px] text-[#AFAFAF] mt-2">Negative Mentions</div>
+                        <div className="text-[30px] font-bold mt-2">11,420</div>
+                    </div>
+                </div>
             </div>
+
+
+
+
+           <div className="mt-8">
+            <div className="text-[19px] font-[500] mb-3">Top keywords</div>
+             
+            <div className="cardShadow bg-white rounded-xl overflow-x-auto">
+        <table className="w-full border-collapse">
+          <thead className="bg-main text-white">
+            <tr className="text-left">
+              <th className="px-5 py-4 font-[500] whitespace-nowrap">
+                Watch Video
+              </th>
+
+              <th className="sm:text-right px-[40px] pr-[60px] py-4 font-[500] whitespace-nowrap">
+                Mentions
+              </th>
+              </tr>
+              </thead>
+              
+              <tbody className="font-[500] divide-y divide-[#C1C1C1]">
+            {keywords.map((ele, index) => (
+              <tr key={index}>
+                <td className="px-5 py-2 min-w-[300px]">{ele.keyword}</td>
+                <td className="sm:text-right px-[40px] pr-[60px] py-3.5"><span>{ele.mentions}</span></td>
+              </tr>
+            ))}
+          </tbody>
+
+              </table>
+              </div>
+
+
+           </div>
 
            </div>
            
@@ -173,14 +274,14 @@ const CustomerViewpoint = () => {
       </div>
 }
 
-{/* important for emotion color rendering, becuase the colors are dynamic and "Just in time" can not render dynamic colors in Tailwind CSS */}
-<div className="hidden bg-[#FFFF00]"></div>
-<div className="hidden bg-[#00B9FF]"></div>
-<div className="hidden bg-[#FF72F6]"></div>
-<div className="hidden bg-[#FFC400]"></div>
-<div className="hidden bg-[#00FF33]"></div>
-<div className="hidden bg-[#DEDEDE]"></div>
-<div className="hidden bg-[#FF0000]"></div>
+      {/* important for emotion color rendering, becuase the colors are dynamic and "Just in time" can not render dynamic colors in Tailwind CSS */}
+      <div className="hidden bg-[#FFFF00]"></div>
+      <div className="hidden bg-[#00B9FF]"></div>
+      <div className="hidden bg-[#FF72F6]"></div>
+      <div className="hidden bg-[#FFC400]"></div>
+      <div className="hidden bg-[#00FF33]"></div>
+      <div className="hidden bg-[#DEDEDE]"></div>
+      <div className="hidden bg-[#FF0000]"></div>
     </>
   )
 }
