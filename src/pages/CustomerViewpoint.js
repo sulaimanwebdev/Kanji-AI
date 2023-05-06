@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import SideBar from "../components/SideBar";
 import Navigation from "../components/Navigation";
-import VideoTable from "../components/VideoTable";
-import VideoGallerySkelton from "../components/Skeletons/VideoGallery";
+import CustomerViewpointSkeleton from "../components/Skeletons/CustomerViewpoint";
 
 const CustomerViewpoint = () => {
    const [leftMenu, setleftMenu] = useState(true);
@@ -136,7 +135,7 @@ const CustomerViewpoint = () => {
     <>
     {
         loading ? (
-          <VideoGallerySkelton/>
+          <CustomerViewpointSkeleton />
         ):
       <div>
          <SideBar leftMenu={leftMenu} setleftMenu={setleftMenu}/>
