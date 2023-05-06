@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 
 const CompletedReports = () => {
-
+    
+    // popups
     const [TypePopupVisible, setTypePopupVisible] = useState(false);
     const [CreatedInPopupVisible, setCreatedInPopupVisible] = useState(false);
     const [CreatedByPopupVisible, setCreatedByPopupVisible] = useState(false);
@@ -86,6 +87,7 @@ const CompletedReports = () => {
     };
     //end
 
+    // allowing user to select only 1 checkbox
     const [selectedCheckboxCreatedIn, setSelectedCheckboxCreatedIn] = useState("ascending");
     const handleCheckboxChangeCreatedIn = (event) => {
       setSelectedCheckboxCreatedIn(event.target.value === selectedCheckboxCreatedIn ? null : event.target.value);
