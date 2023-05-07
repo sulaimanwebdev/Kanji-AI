@@ -383,7 +383,7 @@ const CompletedReports = () => {
                 <td className="px-[40px] py-3.5"><span>{ele.createdIn}</span></td>
                 <td className="px-[40px] py-3.5"><span>{ele.createdBy}</span></td>
                 <td className="px-[40px] py-3.5"><span>{ele.analyzing}</span></td>
-                <td className="px-[40px] py-3.5"><button className='rounded-full px-8 py-3 transition bg-main hover:bg-main-hover text-white'>View</button></td>
+                <td className="px-[40px] py-3.5"><button  className='rounded-full px-8 py-3 transition bg-main hover:bg-main-hover text-white'>View</button></td>
               </tr>
             ))}
           </tbody>

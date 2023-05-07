@@ -226,7 +226,7 @@ const Login = () => {
            </div>
 
 
-           {/* First Report */}
+           {/* Horray */}
            <div className={`w-full ${screen === 5 ? "" : "hidden"}`}>
               
               <div className='text-center'>
