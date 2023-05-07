@@ -13,9 +13,9 @@ const Login = () => {
     const [inputPassword, setinputPassword] = useState("");
     const [inputConfirmPassword, setinputConfirmPassword] = useState("");
 
-     // ------ Add Brand
-     const [brandName, setbrandName] = useState("");
-     const [brandDescription, setbrandDescription] = useState("");
+    // ------ Add Brand
+    const [brandName, setbrandName] = useState("");
+    const [brandDescription, setbrandDescription] = useState("");
 
 
     // -------

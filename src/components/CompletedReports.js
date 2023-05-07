@@ -121,6 +121,34 @@ const CompletedReports = () => {
             createdBy: "Tal",
             analyzing: "Product C",
         },
+
+        {
+          type: "Daily",
+          createdIn: "19 May, 2021 : 10:10 AM",
+          createdBy: "Jack",
+          analyzing: "Product A",
+      },
+
+      {
+          type: "Weekly ",
+          createdIn: "18 May, 2021 : 3:12 PM",
+          createdBy: "Jack",
+          analyzing: "Brand A",
+      },
+
+      {
+          type: "Monthly",
+          createdIn: "19 May, 2021 : 10:10 AM",
+          createdBy: "Jack",
+          analyzing: "Product B",
+      },
+
+      {
+          type: "Custom (Every 2 weeks)",
+          createdIn: "19 May, 2021 : 10:10 AM",
+          createdBy: "Tal",
+          analyzing: "Product C",
+      },
     ];
 
 
