@@ -1,5 +1,5 @@
-import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
+import { Dialog, Transition } from '@headlessui/react'
 
 const OngoingReports = () => {
   
@@ -107,7 +107,7 @@ const OngoingReports = () => {
 
 
 
-    {/* delete modal */}
+   {/* delete modal */}
    <Transition appear show={deleteModal} as={Fragment}>
         <Dialog as="div" className="relative z-[60]" onClose={closeModalDelete}>
           <Transition.Child
@@ -164,7 +164,7 @@ const OngoingReports = () => {
 
 
 
-      {/* create report modal */}
+   {/* create report modal */}
    <Transition appear show={reportModal} as={Fragment}>
         <Dialog as="div" className="relative z-[60]" onClose={closeModalReport}>
           <Transition.Child
