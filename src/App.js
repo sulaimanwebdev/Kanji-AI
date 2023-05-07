@@ -5,6 +5,7 @@ import KeyTakeAways from "./pages/KeyTakeAways";
 import VideoGallery from "./pages/VideoGallery";
 import CustomerViewpoint from "./pages/CustomerViewpoint";
 import Reports from "./pages/Reports";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
          <Route path="/dashboard/video-gallery" element={<VideoGallery/>} />
          <Route path="/dashboard/customer-viewpoint" element={<CustomerViewpoint/>} />
          <Route path="/reports" element={<Reports/>} />
+         <Route path="/settings" element={<Settings/>} />
          
          </Routes>
        </Router>
