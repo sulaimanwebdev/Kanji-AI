@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import SideBar from "../components/SideBar";
 import Navigation from "../components/Navigation";
-import VideoGallerySkelton from "../components/Skeletons/VideoGallery";
+import ReportsSkelton from "../components/Skeletons/Reports";
 import OngoingReports from "../components/OngoingReports";
 import CompletedReports from "../components/CompletedReports";
 
@@ -42,7 +42,7 @@ const Reports = () => {
     <>
     {
         loading ? (
-          <VideoGallerySkelton/>
+          <ReportsSkelton/>
         ):
       <div>
          <SideBar leftMenu={leftMenu} setleftMenu={setleftMenu}/>

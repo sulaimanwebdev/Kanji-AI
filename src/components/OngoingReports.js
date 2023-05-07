@@ -146,7 +146,7 @@ const OngoingReports = () => {
                     </div>
                   
                     <div className="flex flex-col gap-3 mt-5 max-w-[500px] mx-auto">
-                     <button className="w-full py-3 bg-[#FF5858] rounded-full text-white">Yes, delete the report</button>
+                     <button onClick={closeModalDelete} className="w-full py-3 bg-[#FF5858] rounded-full text-white">Yes, delete the report</button>
                      <button onClick={closeModalDelete} className="w-full py-3 bg-main hover:bg-main-hover rounded-full text-white">Cancel</button>
                     </div>
                   
