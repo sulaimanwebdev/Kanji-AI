@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import SideBar from "../components/SideBar";
 import Navigation from "../components/Navigation";
 import CustomerViewpointSkeleton from "../components/Skeletons/CustomerViewpoint";
-import ChartComp from "../components/ChartComp";
+import Chart from "../components/Chart";
 
 const CustomerViewpoint = () => {
    const [leftMenu, setleftMenu] = useState(true);
@@ -42,40 +42,40 @@ const CustomerViewpoint = () => {
 
   let data = [
     {
-        emotion: "happy",
-        percentage: "31%",
-        color: "#FFFF00"
+      emotion: "happy",
+      percentage: "40%",
+      color: "#FFFF00",
     },
     {
-        emotion: "calm",
-        percentage: "29%",
-        color: "#00B9FF"
+      emotion: "calm",
+      percentage: "15%",
+      color: "#00B9FF",
     },
     {
-        emotion: "surprised",
-        percentage: "14%",
-        color: "#FF72F6"
+      emotion: "surprised",
+      percentage: "10%",
+      color: "#FF72F6",
     },
     {
-        emotion: "confused",
-        percentage: "16%",
-        color: "#FFC400"
+      emotion: "confused",
+      percentage: "12%",
+      color: "#FFC400",
     },
     {
-        emotion: "disgusted",
-        percentage: "05%",
-        color: "#00FF33"
+      emotion: "disgusted",
+      percentage: "8%",
+      color: "#00FF33",
     },
     {
-        emotion: "sad",
-        percentage: "02%",
-        color: "#DEDEDE"
+      emotion: "sad",
+      percentage: "10%",
+      color: "#DEDEDE",
     },
     {
-        emotion: "angry",
-        percentage: "03%",
-        color: "#FF0000"
-    }
+      emotion: "angry",
+      percentage: "5%",
+      color: "#FF0000",
+    },
   ];
 
   
@@ -193,7 +193,7 @@ const CustomerViewpoint = () => {
 
 
             <div className="grid grid-cols-1 sm4:grid-cols-[1fr,250px] xl2:grid-cols-[1fr,300px] gap-5 mt-8">
-                <div className="cardShadow bg-white grid grid-cols-1 lg4:grid-cols-2 gap-7 lg4:gap-2 rounded-xl px-6 py-3.5">
+                <div className="cardShadow bg-white grid grid-cols-1 lg4:grid-cols-2 gap-14 lg4:gap-2 rounded-xl px-6 pb-10 lg4:pb-6 py-3.5">
                  <div className="w-full">
                   <div className="text-[19px] font-[500] mb-3">What are people feeling?</div>
                   <div className="flex flex-col gap-4 w-full">
@@ -215,7 +215,7 @@ const CustomerViewpoint = () => {
 
                  <div className="h-full flex items-center justify-center">
                     {/* <img src="/images/chart.svg" alt="chart" className="w-full max-w-[450px] self-center" /> */}
-                    <ChartComp/>
+                    <Chart data={data}/>
                  </div>
                 </div>
                 <div className="h-full grid-cols-1 grid-rows-2">

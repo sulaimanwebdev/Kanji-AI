@@ -1,50 +1,11 @@
-import React from 'react';
 
-const data = [
-  {
-    emotion: 'happy',
-    percentage: '31%',
-    color: '#FFFF00',
-  },
-  {
-    emotion: 'calm',
-    percentage: '29%',
-    color: '#00B9FF',
-  },
-  {
-    emotion: 'surprised',
-    percentage: '14%',
-    color: '#FF72F6',
-  },
-  {
-    emotion: 'confused',
-    percentage: '16%',
-    color: '#FFC400',
-  },
-  {
-    emotion: 'disgusted',
-    percentage: '05%',
-    color: '#00FF33',
-  },
-  {
-    emotion: 'sad',
-    percentage: '02%',
-    color: '#DEDEDE',
-  },
-  {
-    emotion: 'angry',
-    percentage: '03%',
-    color: '#FF0000',
-  },
-];
-
-const ChartComp = () => {
+const Chart = ({data}) => {
   const chartSize = 300; // Size of the circular chart
   const center = chartSize / 2; // Center point of the chart
   const radius = chartSize / 2 - 30; // Radius of the chart (adjusted for padding and section size)
-  const gapAngle = 1.80; // Angle in degrees for the gap between sections
+  const gapAngle = 1.85; // Angle in degrees for the gap between sections
   const strokeWidth = 40; // Width of the chart stroke
-  const textOffset = 10; // Offset for spacing between text and chart
+  const textOffset = 15; // Offset for spacing between text and chart
 
   // Calculate the starting angle and end angle for each data point
   let startAngle = 0;
@@ -101,4 +62,4 @@ const ChartComp = () => {
 );
 };
 
-export default ChartComp;
+export default Chart;
