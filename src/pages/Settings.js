@@ -28,7 +28,7 @@ const Settings = () => {
 
     // skeleton
     setTimeout(() => {
-      setloading(true);
+      setloading(false);
     }, 500);
 
     handleResize();
