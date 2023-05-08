@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import SideBar from "../components/SideBar";
 import Navigation from "../components/Navigation";
-import ReportsSkelton from "../components/Skeletons/Reports";
+import SettingsSkelton from "../components/Skeletons/Settings";
 import MyBrandsSlider from "../components/MyBrandsSlider";
 import MyProductsSlider from "../components/MyProductsSlider";
 
@@ -28,7 +28,7 @@ const Settings = () => {
 
     // skeleton
     setTimeout(() => {
-      setloading(false);
+      setloading(true);
     }, 500);
 
     handleResize();
@@ -44,7 +44,7 @@ const Settings = () => {
     <>
     {
         loading ? (
-          <ReportsSkelton/>
+          <SettingsSkelton/>
         ):
       <div>
          <SideBar leftMenu={leftMenu} setleftMenu={setleftMenu}/>

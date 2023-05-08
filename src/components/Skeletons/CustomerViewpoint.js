@@ -32,7 +32,7 @@ const CustomerViewpoint = () => {
         </div>
 
 
-        <div className={`px-5 pt-3 pb-5 lg:ml-[240px]`}>
+        <div className={`px-5 pt-3 pb-5 lg3:ml-[240px]`}>
            <div className="flex items-center justify-between">
               <div className="text-[22px] text-[#3D3D3D] font-[800]">Dashboard</div>
               <Navigation/>

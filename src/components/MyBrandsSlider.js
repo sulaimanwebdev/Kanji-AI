@@ -119,9 +119,12 @@ const MyBrandsSlider = () => {
             },
             952: {
               slidesPerView: 4,
+            },
+            1542: {
+              slidesPerView: 6,
             }
           }}
-          slidesPerView={4}
+          slidesPerView={6}
           spaceBetween={20}
           rewind={true}
           pagination={{
