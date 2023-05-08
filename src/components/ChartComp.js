@@ -38,11 +38,13 @@ const data = [
   },
 ];
 
-
 const ChartComp = () => {
   const chartSize = 300; // Size of the circular chart
   const center = chartSize / 2; // Center point of the chart
-  const radius = chartSize / 2 - 10; // Radius of the chart (adjusted for padding)
+  const radius = chartSize / 2 - 30; // Radius of the chart (adjusted for padding and section size)
+  const gapAngle = 1.80; // Angle in degrees for the gap between sections
+  const strokeWidth = 40; // Width of the chart stroke
+  const textOffset = 10; // Offset for spacing between text and chart
 
   // Calculate the starting angle and end angle for each data point
   let startAngle = 0;
@@ -53,7 +55,7 @@ const ChartComp = () => {
       start: startAngle,
       end: endAngle,
     };
-    startAngle = endAngle;
+    startAngle = endAngle + gapAngle;
     return angle;
   });
 
@@ -67,19 +69,36 @@ const ChartComp = () => {
         const endX = center + radius * Math.cos((angle.end - 90) * (Math.PI / 180));
         const endY = center + radius * Math.sin((angle.end - 90) * (Math.PI / 180));
 
+        // Calculate the middle angle for positioning the text
+        const middleAngle = (angle.start + angle.end) / 2;
+        const textX = center + (radius + strokeWidth / 1.2 + textOffset) * Math.cos((middleAngle - 90) * (Math.PI / 180));
+        const textY = center + (radius + strokeWidth / 1.2 + textOffset) * Math.sin((middleAngle - 90) * (Math.PI / 180));
+
         return (
           <g key={item.emotion}>
             <path
               d={`M ${startX} ${startY} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY}`}
               fill="none"
               stroke={item.color}
-              strokeWidth="50"
-            />
-          </g>
-        );
-      })}
-    </svg>
-  );
+              strokeWidth={strokeWidth
+              }
+              />
+                      <text
+          x={textX}
+          y={textY}
+          dominantBaseline="middle"
+          textAnchor="middle"
+          fill="#000000"
+          fontSize="14"
+          className="font-bold"
+        >
+          {item.percentage}
+        </text>
+      </g>
+    );
+  })}
+</svg>
+);
 };
 
 export default ChartComp;
