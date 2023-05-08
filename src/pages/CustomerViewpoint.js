@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import SideBar from "../components/SideBar";
 import Navigation from "../components/Navigation";
 import CustomerViewpointSkeleton from "../components/Skeletons/CustomerViewpoint";
+import ChartComp from "../components/ChartComp";
 
 const CustomerViewpoint = () => {
    const [leftMenu, setleftMenu] = useState(true);
@@ -213,7 +214,8 @@ const CustomerViewpoint = () => {
                  </div>
 
                  <div className="h-full flex items-center justify-center">
-                    <img src="/images/chart.svg" alt="chart" className="w-full max-w-[450px] self-center" />
+                    {/* <img src="/images/chart.svg" alt="chart" className="w-full max-w-[450px] self-center" /> */}
+                    <ChartComp/>
                  </div>
                 </div>
                 <div className="h-full grid-cols-1 grid-rows-2">
