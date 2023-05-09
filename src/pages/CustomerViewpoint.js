@@ -148,7 +148,7 @@ const CustomerViewpoint = () => {
            </div>
     
           <div className="mt-8">
-             <div className="text-[19px] font-[500]">Weekly Report - Key Takeaways</div>
+             <div className="text-[19px] font-[500]">Weekly Report - Customer Viewpoint</div>
              <div className="text-[15px] text-not-gray mt-1">March 24, 2023</div>
               
              
@@ -157,6 +157,30 @@ const CustomerViewpoint = () => {
            <div className="mt-7">
 
            <div>
+           <div>
+                <div className="text-[19px] font-[500] mb-3">Top reputation risks</div>
+               <div className="grid grid-cols-1 sm2:grid-cols-2 lg2:grid-cols-3 xl2:grid-cols-4 gap-5">
+                  {
+                    array.map((ele, index)=>{
+                      return(
+                  <div key={index} className="cardShadow flex items-center gap-5 bg-white rounded-xl px-6 py-3.5 overflow-hidden">
+                     <div className="flex items-center justify-center rounded-2xl bg-[#FF0C0C] bg-opacity-20 rotate-45 w-[60px] h-[60px]"><svg className="-rotate-45" width="32" height="27" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.4545 0H9.09091C7.58182 0 6.29091 0.875 5.74545 2.135L0.254545 14.4725C0.0909091 14.875 0 15.295 0 15.75V19.25C0 21.175 1.63636 22.75 3.63636 22.75H15.1091L13.3818 30.7475L13.3273 31.3075C13.3273 32.025 13.6364 32.69 14.1273 33.1625L16.0545 35L28.0364 23.4675C28.6909 22.8375 29.0909 21.9625 29.0909 21V3.5C29.0909 1.575 27.4545 0 25.4545 0ZM32.7273 0V21H40V0H32.7273Z" fill="#FF0C0C"/></svg></div>
+                     <div>
+                       <div className="text-[14px] text-[#FF0C0C] font-[500]">Top #1 Risk</div>
+                       <div className="text-[19px] font-[500] mt-1">High Prices</div>
+                       <div className="text-[14px] text-[#BCBCBC] mt-1">Mentioned in 1476 Vids</div>
+                     </div>
+                  </div>
+                      )
+                    })
+                  }
+               </div>
+             </div>
+
+
+
+             <div className="mt-12">
+                <div className="text-[19px] font-[500] mb-3">Top success signals</div>
                <div className="grid grid-cols-1 sm2:grid-cols-2 lg2:grid-cols-3 xl2:grid-cols-4 gap-5">
                   {
                     array.map((ele, index)=>{
@@ -172,22 +196,8 @@ const CustomerViewpoint = () => {
                       )
                     })
                   }
-
-               {
-                    array.map((ele, index)=>{
-                      return(
-                  <div key={index} className="cardShadow flex items-center gap-5 bg-white rounded-xl px-6 py-3.5 overflow-hidden">
-                     <div className="flex items-center justify-center rounded-2xl bg-[#FF0C0C] bg-opacity-20 rotate-45 w-[60px] h-[60px]"><svg className="-rotate-45" width="32" height="27" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.4545 0H9.09091C7.58182 0 6.29091 0.875 5.74545 2.135L0.254545 14.4725C0.0909091 14.875 0 15.295 0 15.75V19.25C0 21.175 1.63636 22.75 3.63636 22.75H15.1091L13.3818 30.7475L13.3273 31.3075C13.3273 32.025 13.6364 32.69 14.1273 33.1625L16.0545 35L28.0364 23.4675C28.6909 22.8375 29.0909 21.9625 29.0909 21V3.5C29.0909 1.575 27.4545 0 25.4545 0ZM32.7273 0V21H40V0H32.7273Z" fill="#FF0C0C"/></svg></div>
-                     <div>
-                       <div className="text-[14px] text-[#FF0C0C] font-[500]">Top #1 Risk</div>
-                       <div className="text-[19px] font-[500] mt-1">High Prices</div>
-                       <div className="text-[14px] text-[#BCBCBC] mt-1">Mentioned in 1476 Vids</div>
-                     </div>
-                  </div>
-                      )
-                    })
-                  }
                </div>
+             </div>
              </div>
 
 
@@ -214,7 +224,8 @@ const CustomerViewpoint = () => {
                  </div>
 
                  <div className="h-full flex items-center justify-center">
-                    {/* <img src="/images/chart.svg" alt="chart" className="w-full max-w-[450px] self-center" /> */}
+
+                    {/* The chart is dynamic if you change the percentage in the data array it will also change the chart as per percentage */}
                     <Chart data={data}/>
                  </div>
                 </div>
@@ -226,7 +237,7 @@ const CustomerViewpoint = () => {
                     </div>
 
                     <div className="cardShadow bg-white h-[calc(50%-10px)] mt-5 flex items-center justify-center flex-col rounded-xl px-5 py-3.5">
-                        <img src="/images/positive-vote.png" alt="positive" />
+                        <img src="/images/negative-vote.png" alt="negative" />
                         <div className="text-[15px] text-[#AFAFAF] mt-2">Negative Mentions</div>
                         <div className="text-[30px] font-bold mt-2">11,420</div>
                     </div>

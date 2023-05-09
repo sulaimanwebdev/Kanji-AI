@@ -1,7 +1,7 @@
 import Navigation from '../Navigation';
 
 const CustomerViewpoint = () => {
-   let array = [1,2,3,4,5,6,7,8,9,10]
+   let array = [1,2,3,4,5,6,7,8,9,10];
   return (
     <>
     <div>
@@ -42,9 +42,11 @@ const CustomerViewpoint = () => {
             <div className="w-[170px] py-3 bg-[#F3F1F1] skeleton-box rounded-full"></div>
             <div className="w-[100px] py-2 bg-[#F3F1F1] skeleton-box rounded-full mt-2"></div>
            
+            <div className="mt-8">
+            <div className="w-[190px] py-3 bg-[#F3F1F1] skeleton-box rounded-full"></div>
             <div className="grid grid-cols-1 sm2:grid-cols-2 lg2:grid-cols-3 xl2:grid-cols-4 gap-5 mt-6">
                   {
-                    array.map((ele, index)=>{
+                    array.slice(0,4).map((ele, index)=>{
                       return(
                   <div key={index} className="cardShadow flex items-center gap-5 bg-white rounded-xl px-6 py-3.5 overflow-hidden">
                      <div className="flex items-center justify-center rounded-2xl bg-[#F3F1F1] skeleton-box rotate-45 w-[60px] h-[60px]"></div>
@@ -58,6 +60,30 @@ const CustomerViewpoint = () => {
                     })
                   }
                </div>
+                 </div>
+
+
+
+                 <div className="mt-8">
+            <div className="w-[190px] py-3 bg-[#F3F1F1] skeleton-box rounded-full"></div>
+            <div className="grid grid-cols-1 sm2:grid-cols-2 lg2:grid-cols-3 xl2:grid-cols-4 gap-5 mt-6">
+                  {
+                    array.slice(0,4).map((ele, index)=>{
+                      return(
+                  <div key={index} className="cardShadow flex items-center gap-5 bg-white rounded-xl px-6 py-3.5 overflow-hidden">
+                     <div className="flex items-center justify-center rounded-2xl bg-[#F3F1F1] skeleton-box rotate-45 w-[60px] h-[60px]"></div>
+                     <div>
+                     <div className="w-[70px] rounded-full bg-[#F3F1F1] skeleton-box h-[15px] mb-2"></div>
+                     <div className="w-[130px] rounded-full bg-[#F3F1F1] skeleton-box h-[25px] mb-2"></div>
+                     <div className="w-[170px] rounded-full bg-[#F3F1F1] skeleton-box h-[15px]"></div>
+                     </div>
+                  </div>
+                      )
+                    })
+                  }
+               </div>
+                 </div>
+
 
 
                <div className="grid grid-cols-1 sm4:grid-cols-[1fr,250px] xl2:grid-cols-[1fr,300px] gap-5 mt-8">

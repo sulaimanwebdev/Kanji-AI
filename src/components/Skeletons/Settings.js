@@ -39,7 +39,6 @@ const Settings = () => {
                 <div className="w-full">
                 <div className="bg-[#F3F1F1] skeleton-box w-full rounded-md h-[60px]"></div>
                 <div className="bg-[#F3F1F1] skeleton-box w-full rounded-md h-[60px] mt-5"></div>
-                <div className="bg-[#F3F1F1] skeleton-box w-full rounded-md h-[60px] mt-5"></div>
               </div>
              </div>
            </div>

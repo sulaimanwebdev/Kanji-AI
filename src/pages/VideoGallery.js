@@ -73,7 +73,7 @@ const VideoGallery = () => {
           <div className="mt-8">
              <div className="flex lg:items-center lg:justify-between flex-col lg:flex-row gap-5 lg:gap-0">
               <div>
-               <div className="text-[19px] font-[500]">Weekly Report - Key Takeaways</div>
+               <div className="text-[19px] font-[500]">Weekly Report - Video Gallery</div>
                <div className="text-[15px] text-not-gray mt-1">March 24, 2023</div>
               </div>
 

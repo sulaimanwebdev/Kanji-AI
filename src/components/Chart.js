@@ -1,10 +1,10 @@
 
 const Chart = ({data}) => {
-  const chartSize = 300; // Size of the circular chart
+  const chartSize = window.innerWidth > 800 ? 300 : window.innerWidth > 362 ? 200 : 150; // Size of the circular chart
   const center = chartSize / 2; // Center point of the chart
   const radius = chartSize / 2 - 30; // Radius of the chart (adjusted for padding and section size)
   const gapAngle = 1.85; // Angle in degrees for the gap between sections
-  const strokeWidth = 40; // Width of the chart stroke
+  const strokeWidth = window.innerWidth > 800 ? 40 : window.innerWidth > 362 ? 30 : 20; // Width of the chart stroke
   const textOffset = 15; // Offset for spacing between text and chart
 
   // Calculate the starting angle and end angle for each data point
