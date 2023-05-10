@@ -1,9 +1,10 @@
+import React from 'react';
 
-const Chart = ({data}) => {
+const Chart = ({ data }) => {
   const chartSize = window.innerWidth > 800 ? 300 : window.innerWidth > 362 ? 200 : 150; // Size of the circular chart
   const center = chartSize / 2; // Center point of the chart
   const radius = chartSize / 2 - 30; // Radius of the chart (adjusted for padding and section size)
-  const gapAngle = 1.85; // Angle in degrees for the gap between sections
+  const gapAngle = 0; // Angle in degrees for the gap between sections
   const strokeWidth = window.innerWidth > 800 ? 40 : window.innerWidth > 362 ? 30 : 20; // Width of the chart stroke
   const textOffset = 15; // Offset for spacing between text and chart
 
@@ -35,31 +36,36 @@ const Chart = ({data}) => {
         const textX = center + (radius + strokeWidth / 1.2 + textOffset) * Math.cos((middleAngle - 90) * (Math.PI / 180));
         const textY = center + (radius + strokeWidth / 1.2 + textOffset) * Math.sin((middleAngle - 90) * (Math.PI / 180));
 
+        const isVisible = parseFloat(item.percentage) !== 0; // Check if percentage is not 0%
+
         return (
           <g key={item.emotion}>
-            <path
-              d={`M ${startX} ${startY} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY}`}
-              fill="none"
-              stroke={item.color}
-              strokeWidth={strokeWidth
-              }
+            {isVisible && (
+              <path
+                d={`M ${startX} ${startY} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY}`}
+                fill="none"
+                stroke={item.color}
+                strokeWidth={strokeWidth}
               />
-                      <text
-          x={textX}
-          y={textY}
-          dominantBaseline="middle"
-          textAnchor="middle"
-          fill="#000000"
-          fontSize="14"
-          className="font-bold"
-        >
-          {item.percentage}
-        </text>
-      </g>
-    );
-  })}
-</svg>
-);
+            )}
+            {isVisible && (
+              <text
+                x={textX}
+                y={textY}
+                dominantBaseline="middle"
+                textAnchor="middle"
+                fill="#000000"
+                fontSize="14"
+                className="font-bold"
+              >
+                {item.percentage}
+              </text>
+            )}
+          </g>
+        );
+      })}
+    </svg>
+  );
 };
 
 export default Chart;
