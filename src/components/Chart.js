@@ -37,6 +37,7 @@ const Chart = ({ data }) => {
         const textY = center + (radius + strokeWidth / 1.2 + textOffset) * Math.sin((middleAngle - 90) * (Math.PI / 180));
 
         const isVisible = parseFloat(item.percentage) !== 0; // Check if percentage is not 0%
+        const strokeColor = isVisible ? item.color : 'none'; // Set stroke color to 'none' if percentage is 0%
 
         return (
           <g key={item.emotion}>
@@ -44,7 +45,7 @@ const Chart = ({ data }) => {
               <path
                 d={`M ${startX} ${startY} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY}`}
                 fill="none"
-                stroke={item.color}
+                stroke={strokeColor}
                 strokeWidth={strokeWidth}
               />
             )}

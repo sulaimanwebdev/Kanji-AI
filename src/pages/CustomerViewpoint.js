@@ -43,12 +43,12 @@ const CustomerViewpoint = () => {
   let data = [
     {
       emotion: "happy",
-      percentage: "99%",
+      percentage: "100%",
       color: "#FFFF00",
     },
     {
       emotion: "calm",
-      percentage: "10%",
+      percentage: "0%",
       color: "#00B9FF",
     },
     {
