@@ -50,7 +50,7 @@ const Chart = ({ data }) => {
                 fill="none"
                 stroke={strokeColor100}
                 strokeWidth={strokeWidth}
-                className={item.percentage !== "100%" ? "" : "-translate-x-[120px] translate-y-[120px]"}
+                className={item.percentage !== "100%" ? "" : window.innerWidth > 800 ? "-translate-x-[120px] translate-y-[120px]" : window.innerWidth > 362 ? "-translate-x-[70px] translate-y-[60px]" : "-translate-x-[45px] translate-y-[35px]"}
               />
             )}
             {isVisible && (
@@ -63,7 +63,7 @@ const Chart = ({ data }) => {
                 fontSize="14"
                 className="font-bold"
               >
-                                {item.percentage}
+              {item.percentage}
               </text>
             )}
           </g>
