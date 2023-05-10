@@ -39,14 +39,18 @@ const Chart = ({ data }) => {
         const isVisible = parseFloat(item.percentage) !== 0; // Check if percentage is not 0%
         const strokeColor = isVisible ? item.color : 'none'; // Set stroke color to 'none' if percentage is 0%
 
+        // Set the stroke color to the item color if percentage is 100%
+        const strokeColor100 = parseFloat(item.percentage) === 100 ? item.color : strokeColor;
+
         return (
           <g key={item.emotion}>
             {isVisible && (
               <path
-                d={`M ${startX} ${startY} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY}`}
+                d={`M ${startX} ${item.percentage !== "100%" ? startY : "29.999"} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY}`}
                 fill="none"
-                stroke={strokeColor}
+                stroke={strokeColor100}
                 strokeWidth={strokeWidth}
+                className={item.percentage !== "100%" ? "" : "-translate-x-[120px] translate-y-[120px]"}
               />
             )}
             {isVisible && (
@@ -59,7 +63,7 @@ const Chart = ({ data }) => {
                 fontSize="14"
                 className="font-bold"
               >
-                {item.percentage}
+                                {item.percentage}
               </text>
             )}
           </g>

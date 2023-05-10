@@ -39,7 +39,6 @@ const CustomerViewpoint = () => {
   }, []);
 
 
-
   let data = [
     {
       emotion: "happy",
