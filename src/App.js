@@ -1,6 +1,6 @@
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./pages/Login";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+// import Login from "./pages/Login";
 import KeyTakeAways from "./pages/KeyTakeAways";
 import VideoGallery from "./pages/VideoGallery";
 import CustomerViewpoint from "./pages/CustomerViewpoint";
@@ -12,7 +12,7 @@ function App() {
     <div >
       <Router>
          <Routes>
-         <Route exact path="/" element={<Login/>} />
+         <Route exact path="/" element={<Navigate to="/dashboard/key-takeaways" />}  />
          <Route path="/dashboard/key-takeaways" element={<KeyTakeAways/>} />
          <Route path="/dashboard/video-gallery" element={<VideoGallery/>} />
          <Route path="/dashboard/customer-viewpoint" element={<CustomerViewpoint/>} />
